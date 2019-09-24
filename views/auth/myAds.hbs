@@ -1,0 +1,61 @@
+<h1>Meus Anúncios</h1>
+<form action="/auth/myAds" method="POST">
+  <label for="text">Titulo</label>
+  <input type="text" name="title"><br>
+
+  <label for="text">Escola</label>
+  <input type="text" name="school" placeholder="Nome da Escola"><br>
+
+  <label for="text">Imagens</label>
+  <input type="file" name="photo"><br>
+
+  <label for="text">Descrição:</label> <br>
+  <input type="text" name="description"><br>
+
+  <label for="text">Produto</label>
+  <select id=productsMyAds name="product">
+    <option>Uniforme</option>
+    <option>Livros</option>
+    <option>Outros</option>
+  </select><br>
+
+  <label for="text">Uniforme</label>
+  <select id=Uniforme name="Uniforme">
+    <option>Bermuda/Saia</option>
+    <option>Calça</option>
+    <option>Casaco/Blusa</option>
+    <option>Camiseta</option>
+    <option>Outros</option>
+  </select><br>
+
+  <label for="text">Ano</label>
+  <select id=tagAno name="tagAno">
+    <option>1 ano</option>
+    <option>2 ano</option>
+    <option>3 ano</option>
+    <option>4 ano</option>
+    <option>5 ano</option>
+    <option>6 ano</option>
+    <option>7 ano</option>
+    <option>8 ano</option>
+    <option>9 ano</option>
+    <option>1 ano Medio</option>
+    <option>2 ano Medio</option>
+    <option>3 ano Medio</option>
+  </select><br>
+
+  <label for="text">Tamanho</label>
+  <select id=tagSize name="tagSize">
+    <option>P</option>
+    <option>M</option>
+    <option>G</option>
+  </select><br>
+
+  <label for="text">Estado de Uso</label>
+  <select id=tagState name="tagState">
+    <option>Novo</option>
+    <option>Usado</option>
+  </select><br>
+
+  <button type="submit">Anunciar</button>
+</form>

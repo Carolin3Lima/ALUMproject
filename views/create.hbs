@@ -1,0 +1,32 @@
+<h1>Cadastro</h1>
+<form action="/create" method="POST">
+  <label for="text">Nome</label> <br>
+  <input type="text" name="name" placeholder="Nome"> <br>
+
+  <label for="text">e-mail</label> <br>
+  <input type="text" name="email" placeholder="exemplo@exemplo.com.br"> <br>
+
+  <label for="password">Senha</label> <br>
+  <input type="password" name="password" placeholder="********"> <br>
+
+  <label for="password">Confirme sua Senha</label> <br>
+  <input type="password" name="password2" placeholder="********"> <br>
+
+  <label for="text">Endereço</label> <br>
+  <input type="text" name="street" placeholder="Rua Exemplo"> <br>
+  <input type="number" name="number" placeholder="1234"> <br>
+
+  <input type="text" name="complement" placeholder="apto 123-A"> <br>
+
+  <input type="text" name="neighborhood" placeholder="Bairro"> <br>
+
+  <input type="text" name="city" placeholder="Cidade"> <br>
+
+  <input type="number" name="zipCode" placeholder="11.111-010"> <br>
+
+  {{#if errorMessage}}
+  <div>{{ errorMessage }}</div>
+  {{/if}}
+
+  <button type="submit">Cadastrar</button>
+</form>
