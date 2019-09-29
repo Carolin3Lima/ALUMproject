@@ -1,0 +1,13 @@
+<label for="text">Busca</label>
+<select id=productsIndex placeholder="Selecione">
+  <option></option>
+  <option>Uniforme</option>
+  <option>Livros</option>
+  <option>Outros</option>
+</select><br>
+
+<div class="allAds">
+  {{#each allAds}}
+  {{> adsPartial this}}
+  {{/each}}
+</div>

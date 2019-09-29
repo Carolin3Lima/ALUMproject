@@ -3,17 +3,16 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-const mongoose = require("mongoose");
-
 const hbs = require("hbs");
 const bodyParser = require("body-parser");
 const path = require("path");
 
+const mongoose = require("mongoose");
+
 const session = require("express-session");
 const mongoStore = require("connect-mongo")(session);
 
-const url =
-  "mongodb+srv://IsmaCardoso:Ism@1512@clusterapicurso-35etc.mongodb.net/test?retryWrites=true&w=majority";
+const url = process.env.servermongoAtlas;
 const options = {
   reconnectTries: Number.MAX_VALUE,
   poolSize: 5,
@@ -55,9 +54,9 @@ app.use(
     saveUninitialized: true
   })
 );
-
-const indexRoute = require("./routes/index.routes");
-app.use("/", indexRoute);
+const serchAllAds = require("./controllers/adsRoutes.controller");
+const homeRoute = require("./routes/home.routes");
+app.use("/", homeRoute);
 
 const createRoute = require("./routes/create.routes");
 app.use("/", createRoute);
@@ -65,11 +64,13 @@ app.use("/", createRoute);
 const loginRoute = require("./routes/login.routes");
 app.use("/", loginRoute);
 
-const myAdsnRoute = require("./routes/myAds.routes");
-app.use("/", myAdsnRoute);
+const myAdsRoute = require("./routes/myAds.routes");
+app.use("/", myAdsRoute);
 
 app.listen(process.env.PORT, () => {
   console.log("Application successfully connected to port 3000!");
 });
+
+hbs.registerPartials(`${__dirname}/views/partials`);
 
 module.exports = app;

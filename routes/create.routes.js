@@ -9,7 +9,7 @@ router.get("/create", (req, res, next) => {
   res.render("create");
 });
 
-router.post("/auth/create", async (req, res, next) => {
+router.post("/create", async (req, res, next) => {
   const { name, email, password, password2 } = req.body;
 
   if (!name || !email || !password || !password2)

@@ -6,10 +6,9 @@ const productSchema = new Schema({
   school: { type: String, required: true, min: 5, max: 50 },
   photo: { type: String, min: 5, max: 30 },
   description: { type: String, required: true, min: 5, max: 120 },
-  value: { type: Number, required: true, min: 1, max: 5 },
+  value: { type: Number, min: 1, max: 5 },
   product: {
     type: String,
-    required: true,
     enum: ["Uniforme", "Livros", "Outros"]
   },
   uniforme: {
@@ -19,6 +18,7 @@ const productSchema = new Schema({
   tagAno: {
     type: String,
     enum: [
+      "",
       "1 ano",
       "2 ano",
       "3 ano",
@@ -36,6 +36,7 @@ const productSchema = new Schema({
   tagMatter: {
     type: String,
     enum: [
+      "",
       "Geografia",
       "Matemática",
       "Português",
@@ -45,9 +46,9 @@ const productSchema = new Schema({
       "Outros"
     ]
   },
-  tagSize: { type: String, enum: ["P", "M", "G"] },
-  tagState: { type: String, enum: ["Novo", "Usado"] }
-  // userID: { type: Schema.Types.ObjectId, ref: "Event" }
+  tagSize: { type: String, enum: ["", "P", "M", "G"] },
+  tagState: { type: String, enum: ["", "Novo", "Usado"] },
+  userID: { type: Schema.Types.ObjectId, ref: "Event" }
 });
 
 const Product = mongoose.model("Product", productSchema);
