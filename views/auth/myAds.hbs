@@ -9,8 +9,11 @@
   <label for="text">Imagens</label>
   <input type="file" name="photo"><br>
 
-  <label for="text">Descrição:</label> <br>
+  <label for="text">Descrição:</label>
   <input type="text" name="description"><br>
+
+  <label for="text">Valor: R$ </label>
+  <input type="text" name="value" placeholder="50"><br>
 
   <label for="text">Produto</label>
   <select id=productsMyAds name="product">
@@ -62,3 +65,15 @@
 
   <button type="submit">Anunciar</button>
 </form>
+
+<div class="allAds">
+  <h2>Meus Anuncios</h2>
+  {{#each myAds}}
+  {{> adsPartial this}}
+
+  <a href="??????">Edit</a>
+  <a href="??????">Delete</a>
+
+  <br><br><br>
+  {{/each}}
+</div>

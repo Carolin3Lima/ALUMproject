@@ -7,7 +7,7 @@ const productSchema = new Schema({
   imgName: String,
   imgPath: String,
   description: { type: String, required: true, min: 5, max: 120 },
-  value: { type: Number, min: 1, max: 5 },
+  value: { type: String, min: 1, max: 6 },
   product: {
     type: String,
     enum: ["Uniforme", "Livros", "Outros"]
