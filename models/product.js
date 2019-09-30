@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
   title: { type: String, required: true, min: 5, max: 30 },
   school: { type: String, required: true, min: 5, max: 50 },
-  photo: { type: String, min: 5, max: 30 },
+  imgName: String,
+  imgPath: String,
   description: { type: String, required: true, min: 5, max: 120 },
   value: { type: Number, min: 1, max: 5 },
   product: {
@@ -15,7 +16,7 @@ const productSchema = new Schema({
     type: String,
     enum: ["Bermuda/Saia", "Calça", "Casaco/Blusa", "Camiseta", "Outros"]
   },
-  tagAno: {
+  tagYear: {
     type: String,
     enum: [
       "",

@@ -1,7 +1,7 @@
 const express = require("express");
+const Product = require("../models/product");
 const router = express.Router();
 
-const Product = require("../models/product");
 // const searchAllAds = require("../controllers/adsRoutes.controller");
 
 const searchAllAds = async (req, res) => {
