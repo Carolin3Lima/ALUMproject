@@ -5,11 +5,11 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 /* GET home page */
-router.get("/user", (req, res, next) => {
+router.get("/", (req, res, next) => {
   res.render("user");
 });
 
-router.post("/user", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const { name, email, password, password2 } = req.body;
 
   if (!name || !email || !password || !password2)

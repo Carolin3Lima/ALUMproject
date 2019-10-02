@@ -1,4 +1,4 @@
-<h1>Cadastro</h1>
+{{!-- <h1>Cadastro</h1>
 <form action="/user" method="POST">
   <label for="text">Nome</label> <br>
   <input type="text" name="name" placeholder="Nome"> <br>
@@ -29,4 +29,25 @@
   {{/if}}
 
   <button type="submit">Cadastrar</button>
-</form>
+</form> --}}
+
+<div class="cadastro">
+  <form action="/user" method="POST" id="msform">
+    <fieldset>
+      <h2 class="fs-title">Cadastro</h2>
+      <input type="text" name="name" placeholder="Nome" />
+      <input type="text" name="email" placeholder="E-mail" />
+      <input type="password" name="password" placeholder="Senha" />
+      <input type="password" name="password2" placeholder="Confirme a senha" />
+      <input type="text" name="phone" placeholder="Telefone com DDD (ex: 1188547845)" />
+      <textarea name="address"
+        placeholder="Endereço (ex: Av.Paulista, 1283, apto 58 - Bela Vista. São Paulo-SP. CEP 01567894)"></textarea>
+
+      {{#if errorMessage}}
+      <div>{{ errorMessage }}</div>
+      {{/if}}
+
+      <input type="submit" name="submit" class="submit action-button" value="Enviar" />
+    </fieldset>
+  </form>
+</div>
