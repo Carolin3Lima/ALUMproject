@@ -5,11 +5,11 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 /* GET home page */
-router.get("/create", (req, res, next) => {
-  res.render("create");
+router.get("/user", (req, res, next) => {
+  res.render("user");
 });
 
-router.post("/create", async (req, res, next) => {
+router.post("/user", async (req, res, next) => {
   const { name, email, password, password2 } = req.body;
 
   if (!name || !email || !password || !password2)
@@ -19,14 +19,14 @@ router.post("/create", async (req, res, next) => {
     return res.render("error", { errorMessage: `As senhas devem ser iguais!` });
 
   if (await User.findOne({ email }))
-    return res.render("create", {
+    return res.render("user", {
       errorMessage: `Usuário já cadastrado!`
     });
 
   try {
     const userCreate = await User.create(req.body);
     userCreate.password = undefined;
-    console.log(userCreate);
+    console.log("user", userCreate);
     return res.redirect("/login");
   } catch (err) {
     return res.render("error", {

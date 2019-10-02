@@ -14,7 +14,6 @@ router.use((req, res, next) => {
 const serchMyAds = async (req, res) => {
   const userId = req.session.currentUser._id;
   const myAds = await Product.find({ userID: { $eq: userId } });
-  // console.log(myAds[{ userID }]);
   try {
     res.render("auth/myAds", { myAds });
   } catch (err) {
@@ -44,11 +43,28 @@ router.post(
       adsCreate.save();
       return res.redirect("/");
     } catch (err) {
+      console.log("err", err);
       return res.render("error", {
         errorMessage: `Erro ao criar Anuncio: ${err}`
       });
     }
   }
 );
+
+router.get("/auth/myAdsEdit/:myAdsEditId", async (req, res, next) => {
+  const ads = await Product.findById(req.params.myAdsEditId);
+  return res.render("auth/myAdsEdit", ads);
+});
+
+router.post("/auth/myAdsEdit", async (req, res, next) => {
+  try {
+    const adsEdited = await Product.findByIdAndUpdate(req.body._id, req.body);
+    return res.redirect("/ads/auth/myAds");
+  } catch (err) {
+    return res.render("error", {
+      errorMessage: `Erro ao editar Anuncio: ${err}`
+    });
+  }
+});
 
 module.exports = router;

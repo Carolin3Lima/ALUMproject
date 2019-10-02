@@ -4,11 +4,11 @@ const bcrypt = require("bcrypt");
 
 const User = require("../models/User");
 
-router.get("/login", (req, res, next) => {
+router.get("/", (req, res, next) => {
   return res.render("login");
 });
 
-router.post("/login", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const { email, password } = req.body;
     if (!email || !password)
@@ -29,13 +29,11 @@ router.post("/login", async (req, res, next) => {
       });
 
     req.session.currentUser = user;
-    res.redirect("/auth/myAds");
+    res.redirect("/ads/auth/myAds");
 
     return;
   } catch (err) {
-    return res.render("error", {
-      errorMessage: `Erro: ${err}!`
-    });
+    return res.render("error", { errorMessage: `Erro: ${err}!` });
   }
 });
 
