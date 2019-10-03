@@ -58,7 +58,24 @@ router.get("/auth/myAdsEdit/:myAdsEditId", async (req, res, next) => {
 
 router.post("/auth/myAdsEdit", async (req, res, next) => {
   try {
-    const adsEdited = await Product.findByIdAndUpdate(req.body._id, req.body);
+    const adsEdited = await Product.findByIdAndUpdate(req.query.id, req.body);
+    return res.redirect("/ads/auth/myAds");
+  } catch (err) {
+    return res.render("error", {
+      errorMessage: `Erro ao editar Anuncio: ${err}`
+    });
+  }
+});
+
+router.get("/auth/myAdsDel/:myAdsDelId", async (req, res, next) => {
+  const ads = await Product.findById(req.params.myAdsDelId);
+  return res.render("auth/myAdsDel", ads);
+});
+
+router.post("/auth/myAdsDel", async (req, res, next) => {
+  console.log(req.query);
+  try {
+    const adsDeleted = await Product.findByIdAndDelete(req.query.id, req.body);
     return res.redirect("/ads/auth/myAds");
   } catch (err) {
     return res.render("error", {

@@ -1,5 +1,7 @@
-<h1>Meus Anúncios</h1>
+<h1>Meus Anúncios</h1> <a href="/user/auth/userEdit">Editar Meu cadastro</a>
+
 <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data">
+
   <label for="text">Titulo</label>
   <input type="text" name="title"><br>
 
@@ -84,7 +86,7 @@
   {{> adsPartial this}}
 
   <a href="myAdsEdit/{{_id}}">Edit</a>
-  <a href="myAdsDelet">Delete</a>
+  <a href="myAdsDel/{{_id}}">Delete</a>
 
   <br><br><br>
   {{/each}}

@@ -1,0 +1,15 @@
+<h1>Deletar Meu Anúncio</h1>
+<form action="/ads/auth/myAdsDel?id={{_id}}" method="POST">
+  <p name="title" value="{{title}}">Tutulo: {{title}}</p>
+  <p name="achool" value="{{school}}">Escola: {{school}}</p>
+  <img name="photo" src="{{imgPath}}" alt="{{imgName}}">
+  <p name="product">Descrição {{product}}</p>
+  <p name="value">Valor {{value}}</p>
+  <p name="product">Produto {{product}}</p>
+  <p name="uniforme">Uniforme {{uniforme}}</p>
+  <p name="tagYear">Ano {{tagYear}}</p>
+  <p name="tagMatter">Materia {{tagMatter}}</p>
+  <p name="tagSize">Tamanho {{tagSize}}</p>
+  <p name="tagState">Estado de Uso {{tagState}}</p>
+  <button type="submit">Deletar</button>
+</form>
