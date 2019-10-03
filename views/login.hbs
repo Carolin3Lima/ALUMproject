@@ -1,0 +1,50 @@
+{{!-- <h1>Entrar</h1>
+
+<form action="/login" method="POST">
+  <label for="email">Seu e-mail</label><br>
+  <input type="text" name="email" placeholder="exemplo@exemplo.com"><br>
+
+  <label for="password">Senha</label><br>
+  <input type="password" name="password" placeholder="********"><br>
+
+  <button type="submit">Entrar</button><br>
+  <p>Não tem uma conta? <a href="/user">Cadastrar-se</a></p>
+
+  {{#if MessageEvent}}
+  <div>{{ MessageEvent }}</div>
+  {{/if}}
+</form> --}}
+
+
+<div class="container-login">
+
+  <h2><small>Acesse a sua conta</small></h2>
+
+  <form action="/login" method="POST">
+
+    <div class="group">
+      <input type="" name="email" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label for="email">E-mail</label>
+    </div>
+
+    <div class="group">
+      <input name="password" type="password" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label for="password" name="password">Senha</label>
+    </div>
+
+    {{#if MessageEvent}}
+    <div>{{ MessageEvent }}</div>
+    {{/if}}
+
+    <button type="submit" class="botao-entrar">Entrar</button>
+  </form>
+
+</div>
+
+<p class="footer-login">
+  Não tem uma conta? <a href="/user" target="_blank">Cadastre-se</a>
+</p>
