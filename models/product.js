@@ -49,7 +49,7 @@ const productSchema = new Schema({
   },
   tagSize: { type: String, enum: ["", "P", "M", "G"] },
   tagState: { type: String, enum: ["", "Novo", "Usado"] },
-  userID: { type: Schema.Types.ObjectId, ref: "Event" }
+  userID: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
 });
 
 const Product = mongoose.model("Product", productSchema);

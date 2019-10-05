@@ -1,0 +1,11 @@
+<h1>Pedido</h1>
+<div>
+  <form action="/order/auth/order?id={{id}}" method="POST">
+    <div class="filterAds">
+      {{#each filterAd}}
+      {{> adsPartial this}}
+      {{/each}}
+    </div>
+    <button type="submit">Confirmar Comprar</button>
+  </form>
+</div>

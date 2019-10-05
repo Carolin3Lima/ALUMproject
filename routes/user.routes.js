@@ -43,6 +43,11 @@ router.use((req, res, next) => {
   }
 });
 
+router.get("/auth/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/login");
+});
+
 router.get("/auth/userEdit", async (req, res, next) => {
   const user = await User.findById(req.session.currentUser._id);
   return res.render("auth/userEdit", user);
