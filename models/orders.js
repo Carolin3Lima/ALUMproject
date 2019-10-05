@@ -11,7 +11,7 @@ const orderSchema = new Schema({
   Status: {
     type: String,
     enum: ["available", "negociation", "sold"],
-    default: "available",
+    default: "negociation",
     required: true
   },
   actions: {
