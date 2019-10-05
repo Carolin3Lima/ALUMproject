@@ -4,7 +4,7 @@ const Product = require("../models/product");
 const router = express.Router();
 
 
-//ENFIA NO CU ESSA VALIDACAO DE LOGIN
+
 // router.use((req, res, next) => {
 //   if (req.session.currentUser) {
 //     next();

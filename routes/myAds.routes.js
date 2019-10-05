@@ -14,8 +14,8 @@ router.use((req, res, next) => {
 
 const serchMyAds = async (req, res) => {
   const userId = req.session.currentUser._id;
- // const myAds = await Product.find({ userID: { $eq: userId } });
-  const myAds = await Product.find({title:/Camiseta/});
+ const myAds = await Product.find({ userID: { $eq: userId } });
+  // const myAds = await Product.find({title:/Camiseta/});
   try {
     res.render("auth/myAds", { myAds });
   } catch (err) {
