@@ -11,9 +11,11 @@ router.use((req, res, next) => {
   }
 });
 
+
 const serchMyAds = async (req, res) => {
   const userId = req.session.currentUser._id;
-  const myAds = await Product.find({ userID: { $eq: userId } });
+ const myAds = await Product.find({ userID: { $eq: userId } });
+  // const myAds = await Product.find({title:/Camiseta/});
   try {
     res.render("auth/myAds", { myAds });
   } catch (err) {
@@ -24,6 +26,34 @@ const serchMyAds = async (req, res) => {
 };
 
 router.get("/auth/myAds", serchMyAds);
+
+// router.get("/auth/myAds", function(req, res){
+//   console.log(" asdasd")
+//   var noMatch = null;
+//   if(req.query.search) {
+//       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+//       // Get all Products from DB
+//       Product.find({title: regex}, function(err, allProduct){
+//          if(err){
+//              console.log(err);
+//          } else {
+//             if(allProduct.length < 1) {
+//                 noMatch = "No Product match that query, please try again.";
+//             }
+//             res.render("auth/myAds",{title:allProduct, noMatch: noMatch});
+//          }
+//       });
+//   } else {
+//       // Get all campgrounds from DB
+//       Product.find({}, function(err, allProduct){
+//          if(err){
+//              console.log(err);
+//          } else {
+//           res.render("auth/myAds",{title:allProduct, noMatch: noMatch});         }
+//       });
+//   }
+// });
+
 
 router.post(
   "/auth/myAds",
@@ -83,5 +113,9 @@ router.post("/auth/myAdsDel", async (req, res, next) => {
     });
   }
 });
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

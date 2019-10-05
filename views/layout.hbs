@@ -51,12 +51,15 @@
 <body>
   <div class="topnav">
     <a class="active" href="/">ALUM</a>
+    <a href="/allAds/all">Anúncios</a>
     <a href="/ads/auth/myAds">Meus Anúncios</a>
     <a href="/user/auth/logout">Logout</a>
+
     <div id="cover">
-      <form method="get" action="">
-        <div class="tb">
-          <div class="td"><input type="text" placeholder="O que você procura?"></div>
+      <form method="get" action="/allAds" class="form-inline">
+        <div class="tb"> {{!-- form-group --}}
+          <div class="td"><input name="search" type="text" placeholder="O que você procura?"></div>
+          {{!-- form-control --}}
           <div class="td" id="s-cover">
             <button type="submit">
               <div id="s-circle"></div>
@@ -66,6 +69,7 @@
         </div>
       </form>
     </div>
+
     <div class="topnav-right">
       <a href="/ads/auth/myAds">Minha Conta</a>
     </div>
