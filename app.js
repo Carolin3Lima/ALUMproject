@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-const morgan = require("morgan");
+// const morgan = require("morgan");
 const hbs = require("hbs");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -44,7 +44,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
 app.use(
   session({
@@ -71,6 +71,9 @@ app.use("/login", loginRoute);
 
 const myAdsRoute = require("./routes/myAds.routes");
 app.use("/ads", myAdsRoute);
+
+const allAdsRoute = require("./routes/allAds.routes");
+app.use("/ads", allAdsRoute);
 
 app.listen(process.env.PORT, () => {
   console.log("Application successfully connected to port 3000!");

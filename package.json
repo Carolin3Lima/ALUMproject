@@ -13,6 +13,7 @@
     "cloudinary": "^1.15.0",
     "connect-mongo": "^3.0.0",
     "dotenv": "^8.1.0",
+    "error-stack-parser": "^2.0.4",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "hbs": "^4.0.5",
@@ -25,6 +26,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "locus": "^2.0.1",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.2"
   }

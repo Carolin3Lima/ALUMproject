@@ -1,4 +1,4 @@
-const express = require("express");
+  const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 
@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
   res.render("user");
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/",   async (req, res, next) => {
   const { name, email, password, password2 } = req.body;
 
   if (!name || !email || !password || !password2)
