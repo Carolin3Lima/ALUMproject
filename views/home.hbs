@@ -13,19 +13,28 @@
 </div> --}}
 
 <div class="row">
+  <form action="/searchAds" method="GET" enctype="multipart/form-data"></form>
+
   <div class="img-wrap-book column">
-    <a href="#"> <img src="/images/books.jpg" alt="books" style="width:100%" class="img__img_book books">
+    <a href="/searchAds?product=Livros"> <img src="/images/books.jpg" alt="books" style="width:100%"
+        class="img__img_book books" value="Livros">
       <p class="img__description">LIVROS</p>
     </a>
   </div>
+
   <div class="img-wrap-uni  column">
-    <a href="#"><img src="/images/uniformes.jpg" alt="uniform" style="width:100%" class="img__img_uni unifo">
+    <a href="/searchAds?product=Uniforme"><img src="/images/uniformes.jpg" alt="uniform" style="width:100%"
+        class="img__img_uni unifo" value="Uniforme" type="submit">
       <p class="img__description">UNIFORMES</p>
     </a>
   </div>
+
   <div class="img-wrap-mater column">
-    <a href="#"><img src="/images/materiais.jpg" alt="material" style="width:100%" class="img__img_mater mater">
+    <a href="/searchAds?product=Outros"><img src="/images/materiais.jpg" alt="material" style="width:100%"
+        class="img__img_mater mater" value="Outros">
       <p class="img__description">MATERIAIS</p>
     </a>
   </div>
+
+  </form>
 </div>

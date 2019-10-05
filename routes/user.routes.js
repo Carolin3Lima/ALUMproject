@@ -35,4 +35,34 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.use((req, res, next) => {
+  if (req.session.currentUser) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.get("/auth/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/login");
+});
+
+router.get("/auth/userEdit", async (req, res, next) => {
+  const user = await User.findById(req.session.currentUser._id);
+  return res.render("auth/userEdit", user);
+});
+
+router.post("/auth/userEdit", async (req, res, next) => {
+  try {
+    const userEdited = await User.findByIdAndUpdate(req.query.id, req.body);
+    console.log(req.body);
+    return res.redirect("/ads/auth/myAds");
+  } catch (err) {
+    return res.render("error", {
+      errorMessage: `Erro ao editar Anuncio: ${err}`
+    });
+  }
+});
+
 module.exports = router;

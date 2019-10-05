@@ -12,7 +12,7 @@ const userSchema = new Schema({
   // neighborhood: { type: String, min: 5, max: 50 },
   // city: { type: String, required: true, min: 5, max: 50 },
   // zipCode: { type: Number, required: true }
-  phone: { type: Number, required: true, min: 11 },
+  phone: { type: Number, required: true, min: 10 },
   address: { type: Schema.Types.Mixed, required: true, min: 30 }
 });
 

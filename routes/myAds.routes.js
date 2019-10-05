@@ -11,9 +11,11 @@ router.use((req, res, next) => {
   }
 });
 
+
 const serchMyAds = async (req, res) => {
   const userId = req.session.currentUser._id;
-  const myAds = await Product.find({ userID: { $eq: userId } });
+ const myAds = await Product.find({ userID: { $eq: userId } });
+  // const myAds = await Product.find({title:/Camiseta/});
   try {
     res.render("auth/myAds", { myAds });
   } catch (err) {
@@ -24,6 +26,34 @@ const serchMyAds = async (req, res) => {
 };
 
 router.get("/auth/myAds", serchMyAds);
+
+// router.get("/auth/myAds", function(req, res){
+//   console.log(" asdasd")
+//   var noMatch = null;
+//   if(req.query.search) {
+//       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+//       // Get all Products from DB
+//       Product.find({title: regex}, function(err, allProduct){
+//          if(err){
+//              console.log(err);
+//          } else {
+//             if(allProduct.length < 1) {
+//                 noMatch = "No Product match that query, please try again.";
+//             }
+//             res.render("auth/myAds",{title:allProduct, noMatch: noMatch});
+//          }
+//       });
+//   } else {
+//       // Get all campgrounds from DB
+//       Product.find({}, function(err, allProduct){
+//          if(err){
+//              console.log(err);
+//          } else {
+//           res.render("auth/myAds",{title:allProduct, noMatch: noMatch});         }
+//       });
+//   }
+// });
+
 
 router.post(
   "/auth/myAds",
@@ -58,7 +88,7 @@ router.get("/auth/myAdsEdit/:myAdsEditId", async (req, res, next) => {
 
 router.post("/auth/myAdsEdit", async (req, res, next) => {
   try {
-    const adsEdited = await Product.findByIdAndUpdate(req.body._id, req.body);
+    const adsEdited = await Product.findByIdAndUpdate(req.query.id, req.body);
     return res.redirect("/ads/auth/myAds");
   } catch (err) {
     return res.render("error", {
@@ -66,5 +96,26 @@ router.post("/auth/myAdsEdit", async (req, res, next) => {
     });
   }
 });
+
+router.get("/auth/myAdsDel/:myAdsDelId", async (req, res, next) => {
+  const ads = await Product.findById(req.params.myAdsDelId);
+  return res.render("auth/myAdsDel", ads);
+});
+
+router.post("/auth/myAdsDel", async (req, res, next) => {
+  console.log(req.query);
+  try {
+    const adsDeleted = await Product.findByIdAndDelete(req.query.id, req.body);
+    return res.redirect("/ads/auth/myAds");
+  } catch (err) {
+    return res.render("error", {
+      errorMessage: `Erro ao editar Anuncio: ${err}`
+    });
+  }
+});
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

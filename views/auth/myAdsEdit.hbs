@@ -1,86 +1,85 @@
 <h1>Editar Meus Anúncios</h1>
-<form action="/ads/auth/myAdsEdit?id={{_id}}" method="POST">
-  <input type="text" name="_id" value="{{_id}}"> <br>
+<div>
+  <form action="/ads/auth/myAdsEdit?id={{_id}}" method="POST">
 
-  <label for="text">Titulo</label>
-  <input type="text" name="title" value="{{title}}"> <br>
+    <label for="text">Titulo</label>
+    <input type="text" name="title" value="{{title}}"> <br>
 
-  <label for="text">Escola</label>
-  <input type="text" name="school" value="{{school}}" placeholder="Nome da Escola"><br>
+    <label for="text">Escola</label>
+    <input type="text" name="school" value="{{school}}" placeholder="Nome da Escola"><br>
 
-  <label for="text">Imagens</label>
-  <input type="file" name="photo" value="{{imgPath}}"><br>
+    <label for="text">Imagens</label>
+    <input type="file" name="photo" value="{{imgPath}}"><br>
 
-  <label for="text">Descrição:</label>
-  <input type="text" name="description" value="{{description}}"><br>
+    <label for="text">Descrição:</label>
+    <input type="text" name="description" value="{{description}}"><br>
 
-  <label for="text">Valor: R$ </label>
-  <input type="text" name="value" value="{{value}}" placeholder="50"><br>
+    <label for="text">Valor: R$ </label>
+    <input type="text" name="value" value="{{value}}" placeholder="50"><br>
 
-  <label for="text">Produto</label>
-  <select id=productsMyAds name="product">
-    <option value="{{product}}">{{product}}</option>
-    <option value="uniforme">Uniforme</option>
-    <option value="Livros">Livros</option>
-    <option value="Outros">Outros</option>
-  </select><br>
+    <label for="text">Produto</label>
+    <select id=productsMyAds name="product">
+      <option value="{{product}}">{{product}}</option>
+      <option value="uniforme">Uniforme</option>
+      <option value="Livros">Livros</option>
+      <option value="Outros">Outros</option>
+    </select><br>
 
-  <label for="text">Uniforme</label>
-  <select id=uniforme name="uniforme">
-    <option value="{{uniforme}}">{{uniforme}}</option>
-    <option></option>
-    <option value="Bermuda/Saia">Bermuda/Saia</option>
-    <option value="Calça">Calça</option>
-    <option value="Casaco/Blusa">Casaco/Blusa</option>
-    <option value="Camiseta">Camiseta</option>
-    <option value="Outros">Outros</option>
-  </select><br>
+    <label for="text">Uniforme</label>
+    <select id=uniforme name="uniforme">
+      <option value="{{uniforme}}">{{uniforme}}</option>
+      <option></option>
+      <option value="Bermuda/Saia">Bermuda/Saia</option>
+      <option value="Calça">Calça</option>
+      <option value="Casaco/Blusa">Casaco/Blusa</option>
+      <option value="Camiseta">Camiseta</option>
+      <option value="Outros">Outros</option>
+    </select><br>
 
-  <label for="text">Ano</label>
-  <select id=tagYear name="tagYear">
-    <option value="{{tagYear}}">{{tagYear}}</option>
-    <option value="1 ano">1 ano</option>
-    <option value="2 ano">2 ano</option>
-    <option value="3 ano">3 ano</option>
-    <option value="4 ano">4 ano</option>
-    <option value="5 ano">5 ano</option>
-    <option value="6 ano">6 ano</option>
-    <option value="7 ano">7 ano</option>
-    <option value="8 ano">8 ano</option>
-    <option value="9 ano">9 ano</option>
-    <option value="1 ano Medio">1 ano Medio</option>
-    <option value="2 ano Medio">2 ano Medio</option>
-    <option value="3 ano Medio">3 ano Medio</option>
-  </select><br>
+    <label for="text">Ano</label>
+    <select id=tagYear name="tagYear">
+      <option value="{{tagYear}}">{{tagYear}}</option>
+      <option value="1 ano">1 ano</option>
+      <option value="2 ano">2 ano</option>
+      <option value="3 ano">3 ano</option>
+      <option value="4 ano">4 ano</option>
+      <option value="5 ano">5 ano</option>
+      <option value="6 ano">6 ano</option>
+      <option value="7 ano">7 ano</option>
+      <option value="8 ano">8 ano</option>
+      <option value="9 ano">9 ano</option>
+      <option value="1 ano Medio">1 ano Medio</option>
+      <option value="2 ano Medio">2 ano Medio</option>
+      <option value="3 ano Medio">3 ano Medio</option>
+    </select><br>
 
-  <label for="text">Materia</label>
-  <select id=tagSize name="tagMatter">
-    <option value="{{tagMatter}}">{{tagMatter}}</option>
-    <option value="Geografia">Geografia</option>
-    <option value="Matemática">Matemática</option>
-    <option value="Português">Português</option>
-    <option value="Ciências">Ciências</option>
-    <option value="História">História</option>
-    <option value="Iglês">Iglês</option>
-    <option value="Outros">Outros</option>
-  </select><br>
+    <label for="text">Materia</label>
+    <select id=tagSize name="tagMatter">
+      <option value="{{tagMatter}}">{{tagMatter}}</option>
+      <option value="Geografia">Geografia</option>
+      <option value="Matemática">Matemática</option>
+      <option value="Português">Português</option>
+      <option value="Ciências">Ciências</option>
+      <option value="História">História</option>
+      <option value="Iglês">Iglês</option>
+      <option value="Outros">Outros</option>
+    </select><br>
 
-  <label for="text">Tamanho</label>
-  <select id=tagSize name="tagSize">
-    <option value="{{tagSize}}">{{tagSize}}</option>
-    <option value="P">P</option>
-    <option value="M">M</option>
-    <option value="G">G</option>
-  </select><br>
+    <label for="text">Tamanho</label>
+    <select id=tagSize name="tagSize">
+      <option value="{{tagSize}}">{{tagSize}}</option>
+      <option value="P">P</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+    </select><br>
 
-  <label for="text">Estado de Uso</label>
-  <select id=tagState name="tagState">
-    <option value="{{tagState}}">{{tagState}}</option>
-    <option value="Novo">Novo</option>
-    <option value="Usado">Usado</option>
-  </select><br>
+    <label for="text">Estado de Uso</label>
+    <select id=tagState name="tagState">
+      <option value="{{tagState}}">{{tagState}}</option>
+      <option value="Novo">Novo</option>
+      <option value="Usado">Usado</option>
+    </select><br>
 
-  <button type="submit">Salvar</button>
-</form>
-
+    <button type="submit">Salvar</button>
+  </form>
 </div>

@@ -1,0 +1,12 @@
+<h1>Produtos pesquisados</h1>
+<div>
+  <form action="order/auth/order?id={{_id}}" method="GET">
+    <div class="filterAds">
+      {{#each filterAds}}
+      {{> adsPartial this}}
+      <a href="order/auth/order?id={{_id}}">Comprar</a>
+      <br><br><br>
+      {{/each}}
+    </div>
+  </form>
+</div>

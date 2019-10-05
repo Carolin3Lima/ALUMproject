@@ -1,91 +1,95 @@
-<h1>Meus Anúncios</h1>
-<form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data">
-  <label for="text">Titulo</label>
-  <input type="text" name="title"><br>
+<h1>Meus Anúncios</h1> <a href="/user/auth/userEdit">Editar Meu cadastro</a>
+<div class="cadastro">
 
-  <label for="text">Escola</label>
-  <input type="text" name="school" placeholder="Nome da Escola"><br>
+  <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data">
 
-  <label for="text">Imagens</label>
-  <input type="file" name="photo"><br>
+    <label for="text">Titulo</label>
+    <input type="text" name="title"><br>
 
-  <label for="text">Descrição:</label>
-  <input type="text" name="description"><br>
+    <label for="text">Escola</label>
+    <input type="text" name="school" placeholder="Nome da Escola"><br>
 
-  <label for="text">Valor: R$ </label>
-  <input type="text" name="value" placeholder="50"><br>
+    <label for="text">Imagens</label>
+    <input type="file" name="photo"><br>
 
-  <label for="text">Produto</label>
-  <select id=productsMyAds name="product">
-    <option>Uniforme</option>
-    <option>Livros</option>
-    <option>Outros</option>
-  </select><br>
+    <label for="text">Descrição:</label>
+    <input type="text" name="description"><br>
 
-  <label for="text">Uniforme</label>
-  <select id=uniforme name="uniforme">
-    <option></option>
-    <option>Bermuda/Saia</option>
-    <option>Calça</option>
-    <option>Casaco/Blusa</option>
-    <option>Camiseta</option>
-    <option>Outros</option>
-  </select><br>
+    <label for="text">Valor: R$ </label>
+    <input type="text" name="value" placeholder="50"><br>
 
-  <label for="text">Ano</label>
-  <select id=tagYear name="tagYear">
-    <option></option>
-    <option>1 ano</option>
-    <option>2 ano</option>
-    <option>3 ano</option>
-    <option>4 ano</option>
-    <option>5 ano</option>
-    <option>6 ano</option>
-    <option>7 ano</option>
-    <option>8 ano</option>
-    <option>9 ano</option>
-    <option>1 ano Medio</option>
-    <option>2 ano Medio</option>
-    <option>3 ano Medio</option>
-  </select><br>
+    <label for="text">Produto</label>
+    <select id=productsMyAds name="product">
+      <option>Uniforme</option>
+      <option>Livros</option>
+      <option>Outros</option>
+    </select><br>
 
-  <label for="text">Materia</label>
-  <select id=tagSize name="tagMatter">
-    <option></option>
-    <option>Geografia</option>
-    <option>Matemática</option>
-    <option>Português</option>
-    <option>Ciências</option>
-    <option>História</option>
-    <option>Iglês</option>
-    <option>Outros</option>
-  </select><br>
+    <label for="text">Uniforme</label>
+    <select id=uniforme name="Uniforme">
+      <option></option>
+      <option>Bermuda/Saia</option>
+      <option>Calça</option>
+      <option>Casaco/Blusa</option>
+      <option>Camiseta</option>
+      <option>Outros</option>
+    </select><br>
 
-  <label for="text">Tamanho</label>
-  <select id=tagSize name="tagSize">
-    <option></option>
-    <option>P</option>
-    <option>M</option>
-    <option>G</option>
-  </select><br>
+    <label for="text">Ano</label>
+    <select id=tagYear name="tagYear">
+      <option></option>
+      <option>1 ano</option>
+      <option>2 ano</option>
+      <option>3 ano</option>
+      <option>4 ano</option>
+      <option>5 ano</option>
+      <option>6 ano</option>
+      <option>7 ano</option>
+      <option>8 ano</option>
+      <option>9 ano</option>
+      <option>1 ano Medio</option>
+      <option>2 ano Medio</option>
+      <option>3 ano Medio</option>
+    </select><br>
 
-  <label for="text">Estado de Uso</label>
-  <select id=tagState name="tagState">
-    <option>Novo</option>
-    <option>Usado</option>
-  </select><br>
+    <label for="text">Materia</label>
+    <select id=tagSize name="tagMatter">
+      <option></option>
+      <option>Geografia</option>
+      <option>Matemática</option>
+      <option>Português</option>
+      <option>Ciências</option>
+      <option>História</option>
+      <option>Iglês</option>
+      <option>Outros</option>
+    </select><br>
 
-  <button type="submit">Anunciar</button>
-</form>
+    <label for="text">Tamanho</label>
+    <select id=tagSize name="tagSize">
+      <option></option>
+      <option>P</option>
+      <option>M</option>
+      <option>G</option>
+    </select><br>
 
-<div class="allAds">
-  <h2>Meus Anuncios</h2>
-  {{#each myAds}}
-  {{> adsPartial this}}
+    <label for="text">Estado de Uso</label>
+    <select id=tagState name="tagState">
+      <option>Novo</option>
+      <option>Usado</option>
+    </select><br>
 
-  <a href="myAdsEdit/{{_id}}">Edit</a>
-  <a href="myAdsDelet">Delete</a>
+    <button type="submit">Anunciar</button>
 
-  <br><br><br>
-  {{/each}}
+    <div class="allAds">
+      <h2>Meus Anuncios</h2>
+      {{#each myAds}}
+      {{> adsPartial this}}
+      <a href="myAdsEdit/{{_id}}">Edit</a>
+      <a href="myAdsDel/{{_id}}">Delete</a>
+      <br><br><br>
+      {{/each}}
+    </div>
+
+  </form>
+
 </div>
