@@ -36,17 +36,17 @@
   <form action="/login" method="POST">
 
     <div class="group">
-      <input type="" name="email" required>
+      <input class="email-input" type="" name="email" required>
       <span class="highlight"></span>
       <span class="bar"></span>
-      <label for="email">E-mail</label>
+      <label class="login-title" for="email">E-mail</label>
     </div>
 
     <div class="group">
-      <input name="password" type="password" required>
+      <input class="email-input" name="password" type="password" required>
       <span class="highlight"></span>
       <span class="bar"></span>
-      <label for="password" name="password">Senha</label>
+      <label class="login-title" for="password" name="password">Senha</label>
     </div>
 
     {{#if MessageEvent}}

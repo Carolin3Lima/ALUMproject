@@ -393,7 +393,7 @@ a {
   position: relative;
   margin-bottom: 45px;
 }
-input {
+.email-input {
   font-size: 18px;
   padding: 10px 10px 10px 5px;
   display: block;
@@ -401,12 +401,12 @@ input {
   border: none;
   border-bottom: 1px solid #757575;
 }
-input:focus {
+.email-input:focus {
   outline: none;
 }
 
 /* LABEL ======================================= */
-label {
+.login-title {
   color: #999;
   font-size: 18px;
   font-weight: normal;
@@ -420,11 +420,10 @@ label {
 }
 
 /* active state */
-input:focus ~ label,
-input:valid ~ label {
+.email-input:focus ~ label,
+.email-input:valid ~ label {
   top: -20px;
   font-size: 14px;
-  color: #5264ae;
 }
 
 /* BOTTOM BARS ================================= */
@@ -440,7 +439,7 @@ input:valid ~ label {
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #5264ae;
+  background: #3fc58d;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
@@ -526,10 +525,10 @@ input:focus ~ .highlight {
   margin-top: 10%;
 }
 
-/* cadastro */
+/* cadastro user */
 
 .cadastro{
-  height: 450px;
+  height: 530px;
 }
 
 /*basic reset*/
@@ -548,14 +547,14 @@ html {
 
 
 /*form styles*/
-#msform {
+#userform {
   width: 400px;
   margin: 1% 30%;
   text-align: center;
   position: relative;
   height: 500px;
 }
-#msform fieldset {
+#userform fieldset {
   background: white;
   border: 0 none;
   border-radius: 3px;
@@ -569,14 +568,15 @@ html {
   position: relative;
 }
 /*Hide all except first fieldset*/
-#msform fieldset:not(:first-of-type) {
+#userform fieldset:not(:first-of-type) {
   display: none;
 }
 /*inputs*/
-#msform input,
-#msform textarea {
+#userform input,
+#userform label,
+#userform textarea {
   padding: 15px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 3px;
   margin-bottom: 3px;
   width: 100%;
@@ -587,7 +587,7 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 /*buttons*/
-#msform .action-button {
+#userform .action-button {
   width: 100px;
   font-weight: bold;
   padding: 8px 5px;
@@ -598,13 +598,13 @@ html {
   border-radius: 25px;
 }
 
-#msform .action-button:hover {
+#userform .action-button:hover {
   background-color: white;
   color: #3fc58d;
 }
 
 /*headings*/
-.fs-title {
+.userform-title {
   font-size: 15px;
   text-transform: uppercase;
   color: #3fc58d;
@@ -613,12 +613,109 @@ html {
   text-shadow: 1px 1px 4px rgb(179, 177, 177);
 }
 
-.container-cadastro {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 600px;
-  margin: 2px auto 0;
+.title-adress{
+  text-align: left;
+  font-size: 13px;
+  margin-bottom: 5px !important;
+  color: #696969;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+/* BOTTOM BARS ================================= */
+.bar-form {
+  position: relative;
   display: block;
-  background: #fff;
-  padding: 2px 50px 50px;
+  width: 420px;
+}
+.bar-form:before,
+.bar-form:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #3fc58d;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar-form:before {
+  left: 50%;
+}
+.bar-form:after {
+  right: 50%;
+}
+
+/* active state */
+input:focus ~ .bar-form:before,
+input:focus ~ .bar-form:after {
+  width: 50%;
+}
+
+
+/* cadastro item */
+.addItem{
+  height: 500px;
+  width: 100%;
+  padding-left: 5%;
+}
+.itemform-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #3fc58d;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgb(179, 177, 177);
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+.img-charge{
+  color: #696969;
+  border: none !important;
+}
+
+.prod-description{
+  margin-top: 15px;
+  color: #696969;
+}
+
+
+.available-text {
+    font: 1rem 'Fira Sans', sans-serif;
+    color: #696969;
+}
+
+
+/* BOTTOM BARS ================================= */
+.bar-ads {
+  position: relative;
+  display: block;
+  width: 500px;
+}
+.bar-ads:before,
+.bar-ads:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #3fc58d;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar-ads:before {
+  left: 50%;
+}
+.bar-ads:after {
+  right: 50%;
+}
+
+/* active state */
+input:focus ~ .bar-ads:before,
+input:focus ~ .bar-ads:after {
+  width: 50%;
 }
 
