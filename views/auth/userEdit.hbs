@@ -1,7 +1,20 @@
+<div class="nav-search">
+    <div class="navbar">
+      <a class="active logo" href="/">ALUM</a>
+      <section class="navitens">
+        <a class="navitem" href="/allAds/all">Anúncios</a>
+        <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+        {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
+        <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
+        <a href="/user/auth/logout">Logout</a>
+      </section>
+    </div>
+</div>
+
 <div class="cadastro">
-  <form action="/user/auth/userEdit?id={{_id}}" method="POST" id="msform">
+  <form action="/user/auth/userEdit?id={{_id}}" method="POST" id="msform" class="user-form">
     <fieldset>
-      <h2 class="fs-title">Editar Cadastro</h2>
+      <h2 class="fs-title">Meus Dados</h2>
       <input type="text" name="name" value={{name}} placeholder="Nome Sobrenome" />
       <input type="text" name="email" value={{email}} placeholder="exemplo@email.com" />
       <input type="number" name="phone" value={{phone}} placeholder="Telefone com DDD (ex: 1188547845)" />

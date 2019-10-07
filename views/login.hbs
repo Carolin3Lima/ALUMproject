@@ -15,10 +15,23 @@
   {{/if}}
 </form> --}}
 
+  
+  <div class="nav-search">
+    <div class="navbar">
+      <a class="active logo" href="/">ALUM</a>
+      <section class="navitens">
+        <a class="navitem" href="/allAds/all">Anúncios</a>
+        <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+        <a href="/ads/auth/myAds">Login | Registrar</a>
+        {{!-- <a href="/user/auth/logout">Logout</a> --}}
+        {{!-- <a class="navitem" href="/user/auth/userEdit">Editar conta</a> --}}
+      </section>
+    </div>
+  </div>
 
 <div class="container-login">
 
-  <h2><small>Acesse a sua conta</small></h2>
+  <h2><small>LOGIN</small></h2>
 
   <form action="/login" method="POST">
 
@@ -46,5 +59,5 @@
 </div>
 
 <p class="footer-login">
-  Não tem uma conta? <a href="/user" target="_blank">Cadastre-se</a>
+  Não tem uma conta? <a href="/user">Cadastre-se</a>
 </p>
