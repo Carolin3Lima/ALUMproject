@@ -1,35 +1,16 @@
-{{!-- <h1>Cadastro</h1>
-<form action="/user" method="POST">
-  <label for="text">Nome</label> <br>
-  <input type="text" name="name" placeholder="Nome"> <br>
+  <div class="nav-search">
+    <div class="navbar">
+      <a class="active logo" href="/">ALUM</a>
+      <section class="navitens">
+        <a class="navitem" href="/allAds/all">Anúncios</a>
+        <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+        <a href="/ads/auth/myAds">Login | Registrar</a>
+        {{!-- <a href="/user/auth/logout">Logout</a> --}}
+        {{!-- <a class="navitem" href="/user/auth/userEdit">Editar conta</a> --}}
+      </section>
+    </div>
+  </div>
 
-  <label for="text">e-mail</label> <br>
-  <input type="text" name="email" placeholder="exemplo@exemplo.com.br"> <br>
-
-  <label for="password">Senha</label> <br>
-  <input type="password" name="password" placeholder="********"> <br>
-
-  <label for="password">Confirme sua Senha</label> <br>
-  <input type="password" name="password2" placeholder="********"> <br>
-
-  <label for="text">Endereço</label> <br>
-  <input type="text" name="street" placeholder="Rua Exemplo"> <br>
-  <input type="number" name="number" placeholder="1234"> <br>
-
-  <input type="text" name="complement" placeholder="apto 123-A"> <br>
-
-  <input type="text" name="neighborhood" placeholder="Bairro"> <br>
-
-  <input type="text" name="city" placeholder="Cidade"> <br>
-
-  <input type="number" name="zipCode" placeholder="00.000-000"> <br>
-
-  {{#if errorMessage}}
-  <div>{{ errorMessage }}</div>
-  {{/if}}
-
-  <button type="submit">Cadastrar</button>
-</form> --}}
 
 <div class="cadastro">
   <form action="/user" method="POST" id="msform">

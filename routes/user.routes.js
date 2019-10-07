@@ -53,6 +53,7 @@ router.get("/auth/userEdit", async (req, res, next) => {
   return res.render("auth/userEdit", user);
 });
 
+
 router.post("/auth/userEdit", async (req, res, next) => {
   try {
     const userEdited = await User.findByIdAndUpdate(req.query.id, req.body);
@@ -64,5 +65,6 @@ router.post("/auth/userEdit", async (req, res, next) => {
     });
   }
 });
+
 
 module.exports = router;
