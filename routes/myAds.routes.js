@@ -1,6 +1,10 @@
 const express = require("express");
 const uploadCloud = require("../public/images/cloudinary/cloudinary");
+
+const Order = require("../models/orders");
 const Product = require("../models/product");
+const User = require("../models/User");
+
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -11,21 +15,59 @@ router.use((req, res, next) => {
   }
 });
 
+let userId = "";
+let myAds = "";
+let myTransactions = "";
+let productIdArr = [];
+let productArr = [];
+// const serchMyAds = async (req, res) => {
+//   const userId = req.session.currentUser._id;
+//  const myAds = await Product.find({ userID: { $eq: userId } });
+//   // const myAds = await Product.find({title:/Camiseta/});
+//   try {
+//     res.render("auth/myAds", { myAds });
+//   } catch (err) {
+//     return res.render("error", {
+//       errorMessage: `Erro ao criar Anuncio: ${err}`
+//     });
+//   }
+// };
+//
 
-const serchMyAds = async (req, res) => {
-  const userId = req.session.currentUser._id;
- const myAds = await Product.find({ userID: { $eq: userId } });
-  // const myAds = await Product.find({title:/Camiseta/});
-  try {
-    res.render("auth/myAds", { myAds });
-  } catch (err) {
-    return res.render("error", {
-      errorMessage: `Erro ao criar Anuncio: ${err}`
-    });
+const searchMyAds = async () => {
+  myAds = await Product.find({ userID: { $eq: userId } });
+};
+
+const serchTransactions = async () => {
+  myTransactions = await Order.find({ buyerID: { $eq: userId } });
+
+  myTransactions.forEach(element => {
+    productIdArr.push(element.productID);
+  });
+};
+
+const searchShopping = async () => {
+  for (const key of productIdArr) {
+    let oneProduct = await Product.findOne({ _id: { $eq: key } });
+    productArr.push(oneProduct);
   }
 };
 
-router.get("/auth/myAds", serchMyAds);
+router.get("/auth/myAds", async (req, res, next) => {
+  userId = req.session.currentUser._id;
+  await searchMyAds();
+  await serchTransactions();
+  await searchShopping();
+  try {
+    return res.render("auth/myAds", { myAds, productArr, myTransactions });
+  } catch (err) {
+    return res.render("error", {
+      errorMessage: `Erro ao criar Negociação: ${err}`
+    });
+  }
+});
+
+// router.get("/auth/myAds", serchMyAds, serchTransactions, searchShopping);
 
 // router.get("/auth/myAds", function(req, res){
 //   console.log(" asdasd")
@@ -53,7 +95,6 @@ router.get("/auth/myAds", serchMyAds);
 //       });
 //   }
 // });
-
 
 router.post(
   "/auth/myAds",
@@ -116,6 +157,6 @@ router.post("/auth/myAdsDel", async (req, res, next) => {
 
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
+}
 
 module.exports = router;

@@ -6,6 +6,9 @@ const router = express.Router();
 const serchAds = async (req, res) => {
   const regex = new RegExp(escapeRegex(req.query.search), "gi");
   const allAds = await Product.find({ title: regex });
+  if (allAds === undefined) {
+    allAds = "Nenhum resultado encontrado para sua busca!";
+  }
   res.render("allAds", { allAds });
 };
 
@@ -20,9 +23,11 @@ const searchAllAds = async (req, res) => {
     const allAds = await Product.find({});
     return res.render("allAds", { allAds });
   } catch (err) {
-    return res.render("error", { errorMessage: `Erro: ${err}!` });
+    return res.send(`errorMessage: ${err}!`);
   }
 };
+
+// return res.render("error", { errorMessage: `Erro: ${err}!` });
 
 router.get("/all", searchAllAds);
 

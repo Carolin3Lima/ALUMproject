@@ -14,4 +14,3 @@ const searchAllAds = async (req, res) => {
 router.get("/", searchAllAds);
 
 module.exports = router;
-
