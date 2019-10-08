@@ -23,6 +23,7 @@
     "multer-storage-cloudinary": "^2.2.1",
     "partial": "0.0.7",
     "partials": "^0.1.0",
+    "passport-google-oauth": "^2.0.0",
     "path": "^0.12.7"
   },
   "devDependencies": {

@@ -13,16 +13,36 @@
 
 
 <div class="cadastro">
-  <form action="/user" method="POST" id="msform">
+  <form action="/user" method="POST" id="userform">
     <fieldset>
-      <h2 class="fs-title">Cadastro</h2>
-      <input type="text" name="name" placeholder="Nome" />
-      <input type="text" name="email" placeholder="E-mail" />
-      <input type="password" name="password" placeholder="Senha" />
-      <input type="password" name="password2" placeholder="Confirme a senha" />
-      <input type="text" name="phone" placeholder="Telefone com DDD (ex: 1188547845)" />
-      <textarea name="address"
-        placeholder="Endereço (ex: Av.Paulista, 1283, apto 58 - Bela Vista. São Paulo-SP. CEP 01567894)"></textarea>
+      <h2 class="userform-title">Cadastro</h2>
+      <div>
+        <input type="text" name="name" placeholder="Nome" />
+        <span class="bar-form"></span>
+      </div>
+      <div>
+        <input type="text" name="email" placeholder="E-mail" />
+        <span class="bar-form"></span>
+      </div>
+      <div>
+        <input type="password" name="password" placeholder="Senha" />
+        <span class="bar-form"></span>
+      </div>
+      <div>
+        <input type="password" name="password2" placeholder="Confirme a senha" />
+        <span class="bar-form"></span>
+      </div>
+      <div>
+        <input type="text" name="phone" placeholder="Telefone com DDD (ex: 1188547845)" />
+        <span class="bar-form"></span>
+      </div>
+
+      <div>
+        <p class="title-adress">Endereço:</p>
+        <textarea name="address"
+          placeholder="Ex: Av.Paulista, 1283, apto 58 - Bela Vista. São Paulo-SP. CEP 01567894"></textarea>
+      </div>
+      
 
       {{#if errorMessage}}
       <div>{{ errorMessage }}</div>
