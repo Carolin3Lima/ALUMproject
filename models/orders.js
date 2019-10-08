@@ -8,16 +8,16 @@ const orderSchema = new Schema({
     required: true
   },
   productID: { type: Schema.Types.ObjectId, ref: "Event", required: true },
-  Status: {
+  status: {
     type: String,
-    enum: ["available", "negociation", "sold"],
-    default: "negociation",
+    enum: ["Diponivel", "Em negociação", "Vendido"],
+    default: "Disponivel",
     required: true
   },
   actions: {
     type: String,
-    enum: ["", "waiting-sent", "sent", "receivid"],
-    default: ""
+    enum: ["waiting-sent", "sent", "received"],
+    default: "waiting-sent"
   },
   aproved: { type: Boolean, default: false },
   buyerID: { type: mongoose.Schema.Types.ObjectId, ref: "User" }

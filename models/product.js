@@ -49,7 +49,12 @@ const productSchema = new Schema({
   },
   tagSize: { type: String, enum: ["", "P", "M", "G"] },
   tagState: { type: String, enum: ["", "Novo", "Usado"] },
-  userID: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+  userID: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  status: {
+    type: String,
+    enum: ["Diponivel", "Em negociação", "Vendido"],
+    default: "Disponivel"
+  }
 });
 
 const Product = mongoose.model("Product", productSchema);

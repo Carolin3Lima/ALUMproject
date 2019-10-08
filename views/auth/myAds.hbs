@@ -139,12 +139,35 @@
 </div>
 
 
-{{!-- <div class="allAds">
-      <h2>Meus Produtos Anunciados</h2>
-      {{#each myAds}}
-      {{> adsPartial this}}
-      <a href="myAdsEdit/{{_id}}">Edit</a>
-      <a href="myAdsDel/{{_id}}">Delete</a>
-      <br><br><br>
-      {{/each}}
-    </div> --}}
+<div class="allAds">
+  <h2>Meus Produtos Anunciados</h2>
+  {{#each myAds}}
+  {{> adsPartial this}}
+  <a href="myAdsEdit/{{_id}}">Edit</a>
+  <a href="myAdsDel/{{_id}}">Delete</a>
+  <br><br><br>
+  {{/each}}
+</div>
+
+<div class="allAds">
+  <h2>Minhas Compras</h2>
+  {{#each productArr}}
+  {{> adsPartial this}}
+  {{#if myTransactions}}
+  <p>Status: {{myTransactions.Status}}</p>
+  <p>Action: {{myTransactions.actions}}</p>
+  <p>Aproved: {{myTransactions.aproved}}</p>
+  {{/if}}
+  <br><br><br>
+  {{/each}}
+</div>
+
+<div class="allAds">
+  <h2>Order</h2>
+  {{#each myTransactions}}
+  <p>Status: {{this.Status}}</p>
+  <p>Action: {{this.actions}}</p>
+  <p>Aproved: {{this.aproved}}</p>
+  {{/each}}
+  <br><br><br>
+</div>

@@ -50,17 +50,40 @@ router.post("/auth/order", async (req, res, next) => {
   req.body.buyerID = capBuyerId._id;
   req.body.salesID = filterAdSales[0].userID;
   req.body.productID = filterAdSales[0]._id;
-  console.log("BuyerID", req.body.buyerID);
-  console.log("SalesID", req.body.salesID);
-  console.log("productID", req.body.salesID);
+  // console.log("BuyerID", req.body.buyerID);
+  // console.log("SalesID", req.body.salesID);
+  // console.log("productID", req.body.salesID);
 
   try {
     const orderCreate = await Order.create(req.body);
+    console.log("CreateOrder", req.body);
+    req.body.status = "Em negociação";
+    await Product.findByIdAndUpdate(req.body._id, req.body.status);
     console.log("Order", orderCreate);
     return res.redirect("/");
   } catch (err) {
     return res.render("error", {
       errorMessage: `Erro ao criar Negociação: ${err}`
+    });
+  }
+});
+
+router.post("/auth/orderEdit", async (req, res, next) => {
+  const actions = req.body.actions;
+
+  if (actions === "received") {
+    req.body.aproved = true;
+    req.body.Status = "sold";
+  } else {
+    req.body.aproved = false;
+  }
+
+  try {
+    const orderEdited = await Order.findByIdAndUpdate(req.query.id, req.body);
+    return res.redirect("ads/auth/myAds");
+  } catch (err) {
+    return res.render("error", {
+      errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }
 });
