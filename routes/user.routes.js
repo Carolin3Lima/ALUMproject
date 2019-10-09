@@ -13,10 +13,10 @@ router.post("/", async (req, res, next) => {
   const { name, email, password, password2 } = req.body;
 
   if (!name || !email || !password || !password2)
-    return res.render("error", { errorMessage: `Dados insuficinetes!` });
+    return res.render("user", { errorMessage: `Dados insuficientes!` });
 
   if (password !== password2)
-    return res.render("error", { errorMessage: `As senhas devem ser iguais!` });
+    return res.render("user", { errorMessage: `As senhas devem ser iguais!` });
 
   if (await User.findOne({ email }))
     return res.render("user", {
@@ -53,18 +53,16 @@ router.get("/auth/userEdit", async (req, res, next) => {
   return res.render("auth/userEdit", user);
 });
 
-
 router.post("/auth/userEdit", async (req, res, next) => {
   try {
     const userEdited = await User.findByIdAndUpdate(req.query.id, req.body);
     console.log(req.body);
     return res.redirect("/ads/auth/myAds");
   } catch (err) {
-    return res.render("error", {
+    return res.render("userEdit", {
       errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }
 });
-
 
 module.exports = router;

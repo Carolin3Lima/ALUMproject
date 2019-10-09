@@ -2,9 +2,6 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 
-// const passport = require("passport");
-// const GoogleStrategy = require("passport-google-oauth").OAuthStrategy;
-
 const User = require("../models/User");
 
 router.get("/", (req, res, next) => {
@@ -36,7 +33,7 @@ router.post("/", async (req, res, next) => {
 
     return;
   } catch (err) {
-    return res.render("error", { errorMessage: `Erro: ${err}!` });
+    return res.render("login", { errorMessage: `Erro: ${err}!` });
   }
 });
 

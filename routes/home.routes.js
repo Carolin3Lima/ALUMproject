@@ -7,7 +7,7 @@ const searchAllAds = async (req, res) => {
     const allAds = await Product.find({});
     return res.render("home", { allAds });
   } catch (err) {
-    return res.render("error", { errorMessage: `Erro: ${err}!` });
+    return res.render("home", { errorMessage: `Erro: ${err}!` });
   }
 };
 

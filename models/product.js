@@ -49,10 +49,10 @@ const productSchema = new Schema({
   },
   tagSize: { type: String, enum: ["", "P", "M", "G"] },
   tagState: { type: String, enum: ["", "Novo", "Usado"] },
-  userID: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  userID: { type: Schema.Types.ObjectId, ref: "User" },
   status: {
     type: String,
-    enum: ["Diponivel", "Em negociação", "Vendido"],
+    enum: ["Disponivel", "Em negociação", "Vendido"],
     default: "Disponivel"
   }
 });

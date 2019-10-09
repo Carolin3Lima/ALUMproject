@@ -42,8 +42,9 @@ const searchShopping = async () => {
 };
 
 const searchBuyer = async () => {
-  buyer = await User.findOne({ _id: { $eq: buyerID } });
-  buyer.password = undefined;
+  seller = await User.findOne({ _id: { $eq: sellerID } });
+
+  seller.password = undefined;
 };
 
 router.get("/auth/myAds", async (req, res, next) => {
@@ -59,10 +60,10 @@ router.get("/auth/myAds", async (req, res, next) => {
       myAds,
       productArr,
       myTransactions,
-      buyer
+      seller
     });
   } catch (err) {
-    return res.render("error", {
+    return res.render("myAds", {
       errorMessage: `Erro ao criar Negociação: ${err}`
     });
   }
@@ -75,11 +76,11 @@ router.post(
     const { title, school } = req.body;
 
     if (!title || !school)
-      return res.render("error", { errorMessage: `Dados insuficientes!` });
+      return res.render("myAds", { errorMessage: `Dados insuficientes!` });
 
     req.body.userID = req.session.currentUser._id;
-    req.body.imgPath = req.file.url ? req.file.url : "";
-    req.body.imgName = req.file.originalname ? req.file.originalname : "";
+    req.body.imgPath = req.file ? req.file.url : "";
+    req.body.imgName = req.file ? req.file.originalname : "";
 
     try {
       const adsCreate = await Product.create(req.body);
@@ -87,7 +88,7 @@ router.post(
       return res.redirect("/");
     } catch (err) {
       console.log("err", err);
-      return res.render("error", {
+      return res.render("mayAds", {
         errorMessage: `Erro ao criar Anuncio: ${err}`
       });
     }
@@ -104,7 +105,7 @@ router.post("/auth/myAdsEdit", async (req, res, next) => {
     const adsEdited = await Product.findByIdAndUpdate(req.query.id, req.body);
     return res.redirect("/ads/auth/myAds");
   } catch (err) {
-    return res.render("error", {
+    return res.render("myAdsEdit", {
       errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }
@@ -121,7 +122,7 @@ router.post("/auth/myAdsDel", async (req, res, next) => {
     const adsDeleted = await Product.findByIdAndDelete(req.query.id, req.body);
     return res.redirect("/ads/auth/myAds");
   } catch (err) {
-    return res.render("error", {
+    return res.render("myAdsDel", {
       errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }

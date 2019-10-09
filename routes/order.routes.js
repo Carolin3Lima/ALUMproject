@@ -22,7 +22,7 @@ const searchAd = async (req, res) => {
     console.log(filterAd);
     return res.render("auth/order", { filterAd, id: filterAd[0]._id });
   } catch (err) {
-    return res.render("error", { errorMessage: `Erro: ${err}!` });
+    return res.render("order", { errorMessage: `Erro: ${err}!` });
   }
 };
 
@@ -43,7 +43,7 @@ router.post("/auth/order", async (req, res, next) => {
   console.log("capBuyerId", capBuyerId);
 
   if (filterBuyer._id === filterAdSales[0].userID)
-    return res.render("error", {
+    return res.render("order", {
       errorMessage: `Não é possivel negociar com você mesmo!`
     });
 
@@ -56,13 +56,13 @@ router.post("/auth/order", async (req, res, next) => {
 
   try {
     const orderCreate = await Order.create(req.body);
-    console.log("CreateOrder", req.body);
-    req.body.status = "Em negociação";
-    await Product.findByIdAndUpdate(req.body._id, req.body.status);
-    console.log("Order", orderCreate);
+    // console.log("CreateOrder", req.body);
+    const status = { status: "Em negociação" };
+    await Product.findByIdAndUpdate(req.query.id, status);
+    // console.log("Order", orderCreate);
     return res.redirect("/");
   } catch (err) {
-    return res.render("error", {
+    return res.render("order", {
       errorMessage: `Erro ao criar Negociação: ${err}`
     });
   }
@@ -71,18 +71,17 @@ router.post("/auth/order", async (req, res, next) => {
 router.post("/auth/orderEdit", async (req, res, next) => {
   const actions = req.body.actions;
 
-  if (actions === "received") {
-    req.body.aproved = true;
-    req.body.Status = "sold";
+  if (actions === "Produto Recebido") {
+    const newStatus = { aproved: true };
   } else {
-    req.body.aproved = false;
+    newStatus = { aproved: false };
   }
 
   try {
-    const orderEdited = await Order.findByIdAndUpdate(req.query.id, req.body);
+    const orderEdited = await Order.findByIdAndUpdate(req.query.id, newStatus);
     return res.redirect("ads/auth/myAds");
   } catch (err) {
-    return res.render("error", {
+    return res.render("order", {
       errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }
