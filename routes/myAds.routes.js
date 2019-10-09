@@ -63,7 +63,7 @@ router.get("/auth/myAds", async (req, res, next) => {
       seller
     });
   } catch (err) {
-    return res.render("myAds", {
+    return res.render("auth/myAds", {
       errorMessage: `Erro ao criar Negociação: ${err}`
     });
   }
@@ -76,7 +76,9 @@ router.post(
     const { title, school } = req.body;
 
     if (!title || !school)
-      return res.render("myAds", { errorMessage: `Dados insuficientes!` });
+      return res.render("auth/myAds", {
+        errorMessage: `Dados insuficientes!`
+      });
 
     req.body.userID = req.session.currentUser._id;
     req.body.imgPath = req.file ? req.file.url : "";
@@ -88,7 +90,7 @@ router.post(
       return res.redirect("/");
     } catch (err) {
       console.log("err", err);
-      return res.render("mayAds", {
+      return res.render("auth/mayAds", {
         errorMessage: `Erro ao criar Anuncio: ${err}`
       });
     }
