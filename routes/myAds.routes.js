@@ -56,14 +56,15 @@ const searchSeller = async () => {
   }
 };
 
-const mergeTransanction = () => {
+const mergeProdTrans = () => {
   for (let i = 0; i < productArr.length; i += 1) {
-    for (let j = 0; j < myTransactions; j += 1) {
+    for (let j = 0; j < myTransactions.length; j += 1) {
       if (productArr[i].userID === myTransactions[j].sellerID) {
         productArr[i].actions = myTransactions[j].actions;
       }
     }
   }
+  return productArr;
 };
 
 router.get("/auth/myAds", async (req, res, next) => {
@@ -72,7 +73,7 @@ router.get("/auth/myAds", async (req, res, next) => {
   await serchTransactions();
   await searchShopping();
   await searchSeller();
-  mergeTransanction();
+  mergeProdTrans();
   try {
     console.log("myAds", myAds);
     console.log("ProductArr", productArr);
