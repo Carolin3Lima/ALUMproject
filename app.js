@@ -81,6 +81,9 @@ app.use("/searchAds", searchAdsRoute);
 const allAdsRoute = require("./routes/allAds.routes");
 app.use("/allAds", allAdsRoute);
 
+// const transactions = require("./routes/transactions.routes");
+// app.use("/transactions", transactions);
+
 app.listen(process.env.PORT, () => {
   console.log("Application successfully connected to port 3000!");
 });

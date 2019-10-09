@@ -7,11 +7,12 @@ const searchAds = async (req, res) => {
   console.log("Rota Search", req.query);
   try {
     const filterAds = await Product.find({
-      product: { $eq: req.query.product }
+      product: { $eq: req.query.product },
+      status: { $eq: "Disponivel" }
     });
     return res.render("searchAds", { filterAds });
   } catch (err) {
-    return res.render("error", { errorMessage: `Erro: ${err}!` });
+    return res.render("searchAds", { errorMessage: `Erro: ${err}!` });
   }
 };
 

@@ -1,6 +1,10 @@
 const express = require("express");
 const uploadCloud = require("../public/images/cloudinary/cloudinary");
+
+const Order = require("../models/orders");
 const Product = require("../models/product");
+const User = require("../models/User");
+
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -11,49 +15,59 @@ router.use((req, res, next) => {
   }
 });
 
+let userId = "";
+let myAds = "";
+let myTransactions = "";
+let productIdArr = [];
+let productArr = [];
+let buyer = "";
 
-const serchMyAds = async (req, res) => {
-  const userId = req.session.currentUser._id;
- const myAds = await Product.find({ userID: { $eq: userId } });
-  // const myAds = await Product.find({title:/Camiseta/});
-  try {
-    res.render("auth/myAds", { myAds });
-  } catch (err) {
-    return res.render("error", {
-      errorMessage: `Erro ao criar Anuncio: ${err}`
-    });
+const searchMyAds = async () => {
+  myAds = await Product.find({ userID: { $eq: userId } });
+};
+
+const serchTransactions = async () => {
+  myTransactions = await Order.find({ buyerID: { $eq: userId } });
+
+  myTransactions.forEach(element => {
+    productIdArr.push(element.productID);
+  });
+};
+
+const searchShopping = async () => {
+  for (const key of productIdArr) {
+    let oneProduct = await Product.findOne({ _id: { $eq: key } });
+    productArr.push(oneProduct);
   }
 };
 
-router.get("/auth/myAds", serchMyAds);
+const searchBuyer = async () => {
+  seller = await User.findOne({ _id: { $eq: sellerID } });
 
-// router.get("/auth/myAds", function(req, res){
-//   console.log(" asdasd")
-//   var noMatch = null;
-//   if(req.query.search) {
-//       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-//       // Get all Products from DB
-//       Product.find({title: regex}, function(err, allProduct){
-//          if(err){
-//              console.log(err);
-//          } else {
-//             if(allProduct.length < 1) {
-//                 noMatch = "No Product match that query, please try again.";
-//             }
-//             res.render("auth/myAds",{title:allProduct, noMatch: noMatch});
-//          }
-//       });
-//   } else {
-//       // Get all campgrounds from DB
-//       Product.find({}, function(err, allProduct){
-//          if(err){
-//              console.log(err);
-//          } else {
-//           res.render("auth/myAds",{title:allProduct, noMatch: noMatch});         }
-//       });
-//   }
-// });
+  seller.password = undefined;
+};
 
+router.get("/auth/myAds", async (req, res, next) => {
+  userId = req.session.currentUser._id;
+  await searchMyAds();
+  await serchTransactions();
+  await searchShopping();
+  try {
+    console.log("myAds", myAds);
+    console.log("ProductArr", productArr);
+    console.log("myTransactions", myTransactions);
+    return res.render("auth/myAds", {
+      myAds,
+      productArr,
+      myTransactions,
+      seller
+    });
+  } catch (err) {
+    return res.render("myAds", {
+      errorMessage: `Erro ao criar Negociação: ${err}`
+    });
+  }
+});
 
 router.post(
   "/auth/myAds",
@@ -62,11 +76,11 @@ router.post(
     const { title, school } = req.body;
 
     if (!title || !school)
-      return res.render("error", { errorMessage: `Dados insuficientes!` });
+      return res.render("myAds", { errorMessage: `Dados insuficientes!` });
 
     req.body.userID = req.session.currentUser._id;
-    req.body.imgPath = req.file.url;
-    req.body.imgName = req.file.originalname;
+    req.body.imgPath = req.file ? req.file.url : "";
+    req.body.imgName = req.file ? req.file.originalname : "";
 
     try {
       const adsCreate = await Product.create(req.body);
@@ -74,7 +88,7 @@ router.post(
       return res.redirect("/");
     } catch (err) {
       console.log("err", err);
-      return res.render("error", {
+      return res.render("mayAds", {
         errorMessage: `Erro ao criar Anuncio: ${err}`
       });
     }
@@ -91,7 +105,7 @@ router.post("/auth/myAdsEdit", async (req, res, next) => {
     const adsEdited = await Product.findByIdAndUpdate(req.query.id, req.body);
     return res.redirect("/ads/auth/myAds");
   } catch (err) {
-    return res.render("error", {
+    return res.render("myAdsEdit", {
       errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }
@@ -108,7 +122,7 @@ router.post("/auth/myAdsDel", async (req, res, next) => {
     const adsDeleted = await Product.findByIdAndDelete(req.query.id, req.body);
     return res.redirect("/ads/auth/myAds");
   } catch (err) {
-    return res.render("error", {
+    return res.render("myAdsDel", {
       errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }
@@ -116,6 +130,6 @@ router.post("/auth/myAdsDel", async (req, res, next) => {
 
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
+}
 
 module.exports = router;

@@ -1,82 +1,82 @@
 <div class="nav-search">
-    <div class="navbar">
-      <a class="active logo" href="/">ALUM</a>
-      <section class="navitens">
-        <a class="navitem" href="/allAds/all">Anúncios</a>
-        <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
-        {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
-        <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
-        <a href="/user/auth/logout">Logout</a>
-      </section>
-    </div>
-    <h1 class="second-title">Meus Anúncios</h1> 
-    <br>
+  <div class="navbar">
+    <a class="active logo" href="/">ALUM</a>
+    <section class="navitens">
+      <a class="navitem" href="/allAds/all">Anúncios</a>
+      <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+      {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
+      <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
+      <a href="/user/auth/logout">Logout</a>
+    </section>
+  </div>
+  <h1 class="second-title">Meus Anúncios</h1>
+  <br>
 </div>
 
 
-<div class="addItem"> 
+<div class="addItem">
 
   <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data" id="itemform">
 
-    <h2 class="itemform-title">Adicionar Produto</h2> 
+    <h2 class="itemform-title">Adicionar Produto</h2>
     <div class="row-register">
       <div class="column-register"></div>
-        {{!-- <label for="text">Titulo do Anúncio</label> --}}
+      {{!-- <label for="text">Titulo do Anúncio</label> --}}
+      <div>
+        <input class="ads-title" type="text" name="title" placeholder="Título do Anúncio" />
+        <span class="bar-ads"></span>
+      </div>
+
+      <div>
+        <input type="text" name="school" placeholder="Nome da Escola" />
+        <span class="bar-ads"></span>
+      </div><br>
+
+      {{!-- <label for="text">Escola</label> --}}
+      <div>
+        <label class="img-charge" for="text">Carregar Imagem</label>
+        <input class="img-charge" type="file" name="photo">
+      </div>
+
+      <div>
+        <label class="prod-description" for="text">Descrição do produto:</label><br>
+        <textarea type="text" name="description"></textarea>
+      </div>
+
+      <div>
+        <p class="available-text">Disponível para:</p>
         <div>
-          <input class="ads-title" type="text" name="title" placeholder="Título do Anúncio" />
-          <span class="bar-ads"></span>
-       </div>
-
-       <div>
-          <input type="text" name="school" placeholder="Nome da Escola" />
-          <span class="bar-ads"></span>
-       </div><br>
-
-          {{!-- <label for="text">Escola</label> --}}
-          <div>
-            <label class="img-charge" for="text">Carregar Imagem</label>
-            <input class="img-charge" type="file" name="photo">
-          </div>
-
-          <div>
-            <label class="prod-description" for="text">Descrição do produto:</label><br>
-            <textarea type="text" name="description"></textarea>
-          </div>
-
-          <div>
-            <p class="available-text">Disponível para:</p>
-              <div>
-                <input class="available" type="checkbox" id="available" name="sell">
-                <label for="sell">Venda</label>
-              </div>
-              <div>
-                <input class="available" type="checkbox" id="available" name="donation">
-                <label for="donation">Doação</label>
-            </div>
-            <div>
-                <input class="available" type="checkbox" id="available" name="change">
-                <label for="change">Troca</label>
-            </div>
-          </div> 
-
-          {{!-- <label for="text">Valor: R$ </label>
-          <textarea type="text" name="value" placeholder="50"></textarea> --}}
-        <div>
-          <input type="text" name="value" placeholder="Preço: R$ 50,00"></input>
-          <span class="bar-ads"></span>
-       </div>
- 
-        <div>
-          <label for="text">Produto</label>
-          <select id=productsMyAds name="product">
-            <option>Uniforme</option>
-            <option>Livro</option>
-            <option>Outros</option>
-          </select><br>
+          <input class="available" type="checkbox" id="available" name="sell">
+          <label for="sell">Venda</label>
         </div>
+        <div>
+          <input class="available" type="checkbox" id="available" name="donation">
+          <label for="donation">Doação</label>
+        </div>
+        <div>
+          <input class="available" type="checkbox" id="available" name="change">
+          <label for="change">Troca</label>
+        </div>
+      </div>
+
+      {{!-- <label for="text">Valor: R$ </label>
+          <textarea type="text" name="value" placeholder="50"></textarea> --}}
+      <div>
+        <input type="text" name="value" placeholder="Preço: R$ 50,00"></input>
+        <span class="bar-ads"></span>
+      </div>
+
+      <div>
+        <label for="text">Produto</label>
+        <select id=productsMyAds name="product">
+          <option>Uniforme</option>
+          <option>Livro</option>
+          <option>Outros</option>
+        </select><br>
+      </div>
     </div>
 
-        {{!-- <div class="column">
+    {{!-- <div class="column">
           <label for="text">Uniforme</label>
           <select id=uniforme name="Uniforme">
             <option></option>
@@ -132,22 +132,42 @@
             <option>Usado</option>
           </select><br> --}}
 
-          <button type="submit"> Anunciar</button>
-        </div>
-      </div>
-    </form>
-  </div>  
-  
+    <button type="submit"> Anunciar</button>
+</div>
+</div>
+</form>
+</div>
 
-    {{!-- <div class="allAds">
-      <h2>Meus Produtos Anunciados</h2>
-      {{#each myAds}}
-      {{> adsPartial this}}
-      <a href="myAdsEdit/{{_id}}">Edit</a>
-      <a href="myAdsDel/{{_id}}">Delete</a>
-      <br><br><br>
-      {{/each}}
-    </div> --}}
 
-  
+<div class="allAds">
+  <h2>Meus Produtos Anunciados</h2>
+  {{#each myAds}}
+  {{> adsPartial this}}
+  <a href="myAdsEdit/{{_id}}">Edit</a>
+  <a href="myAdsDel/{{_id}}">Delete</a>
+  <br><br><br>
+  {{/each}}
+</div>
 
+<div class="allAds">
+  <h2>Minhas Compras</h2>
+  {{#each productArr}}
+  {{> adsPartial this}}
+  {{#if myTransactions}}
+  <p>Status: {{myTransactions.Status}}</p>
+  <p>Action: {{myTransactions.actions}}</p>
+  <p>Aproved: {{myTransactions.aproved}}</p>
+  {{/if}}
+  <br><br><br>
+  {{/each}}
+</div>
+
+<div class="allAds">
+  <h2>Order</h2>
+  {{#each myTransactions}}
+  <p>Status: {{this.Status}}</p>
+  <p>Action: {{this.actions}}</p>
+  <p>Aproved: {{this.aproved}}</p>
+  {{/each}}
+  <br><br><br>
+</div>

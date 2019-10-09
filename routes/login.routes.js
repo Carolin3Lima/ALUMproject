@@ -33,7 +33,7 @@ router.post("/", async (req, res, next) => {
 
     return;
   } catch (err) {
-    return res.render("error", { errorMessage: `Erro: ${err}!` });
+    return res.render("login", { errorMessage: `Erro: ${err}!` });
   }
 });
 
