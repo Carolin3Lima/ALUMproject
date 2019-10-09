@@ -154,9 +154,6 @@
   {{#each productArr}}
   {{> adsPartial this}}
   {{#if myTransactions}}
-  <p>Status: {{myTransactions.Status}}</p>
-  <p>Action: {{myTransactions.actions}}</p>
-  <p>Aproved: {{myTransactions.aproved}}</p>
   {{/if}}
   <br><br><br>
   {{/each}}
@@ -165,9 +162,19 @@
 <div class="allAds">
   <h2>Order</h2>
   {{#each myTransactions}}
-  <p>Status: {{this.Status}}</p>
   <p>Action: {{this.actions}}</p>
   <p>Aproved: {{this.aproved}}</p>
+  {{/each}}
+  <br><br><br>
+</div>
+
+<div class="allAds">
+  <h2>seller</h2>
+  {{#each seller}}
+  <p>Nome: {{this.name}}</p>
+  <p>e-mail: {{this.email}}</p>
+  <p>Contato: {{this.phone}}</p>
+  <p>Endereço: {{this.address}}</p>
   {{/each}}
   <br><br><br>
 </div>

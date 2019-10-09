@@ -20,13 +20,16 @@ let myAds = "";
 let myTransactions = "";
 let productIdArr = [];
 let productArr = [];
-let buyer = "";
+let seller = [];
 
 const searchMyAds = async () => {
+  myAds = "";
   myAds = await Product.find({ userID: { $eq: userId } });
 };
 
 const serchTransactions = async () => {
+  myTransactions = "";
+  productIdArr = [];
   myTransactions = await Order.find({ buyerID: { $eq: userId } });
 
   myTransactions.forEach(element => {
@@ -35,16 +38,32 @@ const serchTransactions = async () => {
 };
 
 const searchShopping = async () => {
+  productArr = [];
   for (const key of productIdArr) {
     let oneProduct = await Product.findOne({ _id: { $eq: key } });
     productArr.push(oneProduct);
   }
 };
 
-const searchBuyer = async () => {
-  seller = await User.findOne({ _id: { $eq: sellerID } });
+const searchSeller = async () => {
+  seller = [];
+  for (const key of myTransactions) {
+    let oneSeller = await User.findOne({
+      _id: { $eq: key.sellerID }
+    });
+    seller.password = undefined;
+    seller.push(oneSeller);
+  }
+};
 
-  seller.password = undefined;
+const mergeTransanction = () => {
+  for (let i = 0; i < productArr.length; i += 1) {
+    for (let j = 0; j < myTransactions; j += 1) {
+      if (productArr[i].userID === myTransactions[j].sellerID) {
+        productArr[i].actions = myTransactions[j].actions;
+      }
+    }
+  }
 };
 
 router.get("/auth/myAds", async (req, res, next) => {
@@ -52,10 +71,13 @@ router.get("/auth/myAds", async (req, res, next) => {
   await searchMyAds();
   await serchTransactions();
   await searchShopping();
+  await searchSeller();
+  mergeTransanction();
   try {
     console.log("myAds", myAds);
     console.log("ProductArr", productArr);
     console.log("myTransactions", myTransactions);
+    console.log("seller", seller);
     return res.render("auth/myAds", {
       myAds,
       productArr,
@@ -63,7 +85,7 @@ router.get("/auth/myAds", async (req, res, next) => {
       seller
     });
   } catch (err) {
-    return res.render("myAds", {
+    return res.render("auth/myAds", {
       errorMessage: `Erro ao criar Negociação: ${err}`
     });
   }
@@ -76,7 +98,9 @@ router.post(
     const { title, school } = req.body;
 
     if (!title || !school)
-      return res.render("myAds", { errorMessage: `Dados insuficientes!` });
+      return res.render("auth/myAds", {
+        errorMessage: `Dados insuficientes!`
+      });
 
     req.body.userID = req.session.currentUser._id;
     req.body.imgPath = req.file ? req.file.url : "";
@@ -88,7 +112,7 @@ router.post(
       return res.redirect("/");
     } catch (err) {
       console.log("err", err);
-      return res.render("mayAds", {
+      return res.render("auth/mayAds", {
         errorMessage: `Erro ao criar Anuncio: ${err}`
       });
     }
