@@ -27,8 +27,6 @@ const searchAllAds = async (req, res) => {
   }
 };
 
-// return res.render("error", { errorMessage: `Erro: ${err}!` });
-
 router.get("/all", searchAllAds);
 
 module.exports = router;

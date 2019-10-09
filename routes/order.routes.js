@@ -43,26 +43,26 @@ router.post("/auth/order", async (req, res, next) => {
   console.log("capBuyerId", capBuyerId);
 
   if (filterBuyer._id === filterAdSales[0].userID)
-    return res.render("order", {
+    return res.render("auth/order", {
       errorMessage: `Não é possivel negociar com você mesmo!`
     });
 
   req.body.buyerID = capBuyerId._id;
-  req.body.salesID = filterAdSales[0].userID;
+  req.body.sellerID = filterAdSales[0].userID;
   req.body.productID = filterAdSales[0]._id;
-  // console.log("BuyerID", req.body.buyerID);
-  // console.log("SalesID", req.body.salesID);
-  // console.log("productID", req.body.salesID);
+  console.log("BuyerID", req.body.buyerID);
+  console.log("sellerID", req.body.salesID);
+  console.log("productID", req.body.salesID);
 
   try {
     const orderCreate = await Order.create(req.body);
-    // console.log("CreateOrder", req.body);
+    console.log("CreateOrder", req.body);
     const status = { status: "Em negociação" };
     await Product.findByIdAndUpdate(req.query.id, status);
-    // console.log("Order", orderCreate);
+    console.log("Order", orderCreate);
     return res.redirect("/");
   } catch (err) {
-    return res.render("order", {
+    return res.render("auth/order", searchAd, {
       errorMessage: `Erro ao criar Negociação: ${err}`
     });
   }
@@ -81,7 +81,7 @@ router.post("/auth/orderEdit", async (req, res, next) => {
     const orderEdited = await Order.findByIdAndUpdate(req.query.id, newStatus);
     return res.redirect("ads/auth/myAds");
   } catch (err) {
-    return res.render("order", {
+    return res.render("auth/order", {
       errorMessage: `Erro ao editar Anuncio: ${err}`
     });
   }

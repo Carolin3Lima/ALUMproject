@@ -16,7 +16,7 @@ router.post("/", async (req, res, next) => {
         MessageEvent: `Digite login e senha!`
       });
 
-    const user = await User.findOne({ email }); //.select("+password");
+    const user = await User.findOne({ email });
     if (!user)
       return res.render("login", {
         MessageEvent: `Usuário ou senha inexistente!`
