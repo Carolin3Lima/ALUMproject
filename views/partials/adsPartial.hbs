@@ -1,15 +1,29 @@
+<head>
+  <link rel="stylesheet" href="/stylesheet/styleadds.css">
+</head>
+
+
+{{!-- <div class="ads-container">
+      <h1>{{this.title}}</h1>
+      <img src={{this.imgPath}} alt={{this.imgName}} width="100px">
+      <h2>Escola: {{this.school}}</h2>
+      <p>Descrição: {{this.description}}</p>
+      <p>Valor: R$ {{this.value}}</p>
+      <p>Produto: {{this.product}}</p>
+      <p>Uniforme: {{this.uniforme}}</p>
+      <p>Ano: {{this.tagYear}}</p>
+      <p>Matéria: {{this.tagMatter}}</p>
+      <p>Tamanho: {{this.tagSize}}</p>
+      <p>Estado de Uso: {{this.tagState}}</p>
+      <p>Status: {{this.status}}</p>
+    </div> --}}
+
 <div class="ads-container">
-  <h1>{{this.title}}</h1>
-  <img src={{this.imgPath}} alt={{this.imgName}} width="100px">
-  <h2>Escola: {{this.school}}</h2>
-  <p>Descrição: {{this.description}}</p>
-  <p>Valor: R$ {{this.value}}</p>
-  <p>Produto: {{this.product}}</p>
-  <p>Uniforme: {{this.uniforme}}</p>
-  <p>Ano: {{this.tagYear}}</p>
-  <p>Matéria: {{this.tagMatter}}</p>
-  <p>Tamanho: {{this.tagSize}}</p>
-  <p>Estado de Uso: {{this.tagState}}</p>
-  <p>Status: {{this.status}}</p>
-  <p>Action: {{this.action}}</p>
+  <div class="card">
+    <img src={{this.imgPath}} alt={this.imgName}} style="width:100%">
+    <h3>{{this.title}}</h3>
+    <p class="price">R${{this.value}}</p>
+    <p>{{this.description}}</p>
+    <p><button>Add to Cart</button></p>
+  </div>
 </div>

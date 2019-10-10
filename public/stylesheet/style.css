@@ -140,9 +140,9 @@ body {
 
 .navbar {
   overflow: hidden;
-  background-color:rgba(0, 0, 0, 0.555);
+  background-color: rgba(0, 0, 0, 0.555);
   box-shadow: 0 5px 8px -2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 50px;;
+  margin-bottom: 50px;
   opacity: 0.92;
   padding: 0px !important;
 }
@@ -173,30 +173,31 @@ body {
 
 /* search */
 
-.nav-search{
+.nav-search {
   background-image: url("../images/backHome.jpg");
   background-attachment: fixed;
   background-size: 100%;
   background-position: 100% -534px;
-  background-repeat: repeat-y;;
+  background-repeat: repeat-y;
 }
 
-.search-table{
+.search-table {
   height: 200px;
 }
 
-.first-title, .second-title{
+.first-title,
+.second-title {
   text-align: center;
   color: #4ad89dd0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.first-title{
+.first-title {
   font-weight: bold;
   font-size: 12px;
 }
 
-.second-title{
+.second-title {
   text-shadow: 2px 3px 8px rgb(37, 37, 37);
   font-weight: bold;
 }
@@ -262,7 +263,8 @@ button {
 
 #s-circle {
   position: relative;
-  top: -25px; /*lupa*/
+  top: -25px;
+  /* lupa */
   left: 10px;
   width: 35px;
   height: 35px;
@@ -291,7 +293,8 @@ button span:before,
 button span:after {
   content: "";
   position: absolute;
-  bottom: 1px; /*lupa*/
+  bottom: 1px;
+  /* lupa */
   right: 4px;
   width: 28px;
   height: 10px;
@@ -302,7 +305,8 @@ button span:after {
 }
 
 #s-cover:hover #s-circle {
-  top: -17px; /*seta*/
+  top: -17px;
+  /* seta */
   width: 60px;
   height: 12px;
   border-width: 0;
@@ -311,7 +315,8 @@ button span:after {
 }
 
 #s-cover:hover span {
-  top: 30%; /*seta*/
+  top: 30%;
+  /* seta */
   left: 60px;
   width: 10px;
   margin-top: -9px;
@@ -351,10 +356,9 @@ a {
   margin-top: -10px;
 }
 
-.footer a:hover{
+.footer a:hover {
   color: #4ad89d;
 }
-
 
 /* formulario login */
 
@@ -369,7 +373,6 @@ a {
   border-radius: 3px;
   box-shadow: 0 0 7px 1px #028b37da;
   box-sizing: border-box;
-
 }
 .container-login h2 {
   text-align: center;
@@ -527,11 +530,11 @@ input:focus ~ .highlight {
 
 /* cadastro user */
 
-.cadastro{
+.cadastro {
   height: 530px;
 }
 
-/*basic reset*/
+/* basic reset */
 * {
   margin: 0;
   padding: 0;
@@ -539,14 +542,13 @@ input:focus ~ .highlight {
 
 html {
   height: 100%;
-  /*Image only BG fallback*/
+  /* imageonly BG fallback */
 
-  /*background = gradient + image pattern combo*/
+  /* background = gradient + image pattern combo */
   background: white;
 }
 
-
-/*form styles*/
+/* form styles */
 #userform {
   width: 400px;
   margin: 1% 30%;
@@ -564,14 +566,14 @@ html {
   width: 120%;
   margin: -5% 10%;
 
-  /*stacking fieldsets above each other*/
+  /* stackingfieldsets above each other */
   position: relative;
 }
-/*Hide all except first fieldset*/
+/* Hide all except first fieldset */
 #userform fieldset:not(:first-of-type) {
   display: none;
 }
-/*inputs*/
+/* inputs */
 #userform input,
 #userform label,
 #userform textarea {
@@ -579,14 +581,16 @@ html {
   /* border: 1px solid #ccc; */
   border-radius: 3px;
   margin-bottom: 3px;
-  width: 100%;
+  /* width: 100%; */
   box-sizing: border-box;
-  font-family: montserrat;
+  /* font-family: montserrat; */
   color: #2c3e50;
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
+  width: 420px;
+  border-bottom: 1px solid #757575;
 }
-/*buttons*/
+/* buttons */
 #userform .action-button {
   width: 100px;
   font-weight: bold;
@@ -603,7 +607,7 @@ html {
   color: #3fc58d;
 }
 
-/*headings*/
+/* headings */
 .userform-title {
   font-size: 15px;
   text-transform: uppercase;
@@ -613,7 +617,7 @@ html {
   text-shadow: 1px 1px 4px rgb(179, 177, 177);
 }
 
-.title-adress{
+.title-adress {
   text-align: left;
   font-size: 13px;
   margin-bottom: 5px !important;
@@ -653,9 +657,8 @@ input:focus ~ .bar-form:after {
   width: 50%;
 }
 
-
 /* cadastro item */
-.addItem{
+.addItem {
   height: 500px;
   width: 100%;
   padding-left: 5%;
@@ -671,22 +674,20 @@ input:focus ~ .bar-form:after {
   padding-bottom: 2%;
 }
 
-.img-charge{
+.img-charge {
   color: #696969;
   border: none !important;
 }
 
-.prod-description{
+.prod-description {
   margin-top: 15px;
   color: #696969;
 }
 
-
 .available-text {
-    font: 1rem 'Fira Sans', sans-serif;
-    color: #696969;
+  font: 1rem "Fira Sans", sans-serif;
+  color: #696969;
 }
-
 
 /* BOTTOM BARS ================================= */
 .bar-ads {
@@ -719,3 +720,89 @@ input:focus ~ .bar-ads:after {
   width: 50%;
 }
 
+/* edit user */
+
+/* form styles */
+#msform {
+  width: 400px;
+  margin: 1% 30%;
+  text-align: center;
+  position: relative;
+  height: 500px;
+}
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 7px 1px #028b37da;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 120%;
+  margin: -5% 10%;
+
+  /* stackingfieldsets above each other */
+  position: relative;
+}
+/* Hide all except first fieldset */
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+/* inputs */
+#msform input,
+#msform label,
+#msform textarea {
+  padding: 15px;
+  /* border: 1px solid #ccc; */
+  border-radius: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2c3e50;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* buttons */
+#msform .action-button {
+  width: 100px;
+  font-weight: bold;
+  padding: 8px 5px;
+  margin: 10px 5px;
+  background-color: #3fc58d;
+  color: white;
+  border: white;
+  border-radius: 25px;
+}
+
+#msform .action-button:hover {
+  background-color: white;
+  color: #3fc58d;
+}
+
+/* headings */
+.msform-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #3fc58d;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgb(179, 177, 177);
+}
+
+/* inputs */
+#msform input,
+#msform label,
+#msform textarea {
+  padding: 15px;
+  /* border: 1px solid #ccc; */
+  border-radius: 3px;
+  margin-bottom: 3px;
+  /* width: 100%; */
+  box-sizing: border-box;
+  /* font-family: montserrat; */
+  color: #2c3e50;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 420px;
+  border-bottom: 1px solid #757575;
+}
