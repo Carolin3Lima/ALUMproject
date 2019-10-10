@@ -1,3 +1,7 @@
+<head>
+  <link rel="stylesheet" href="/stylesheet/styleadds.css">
+</head>
+
 <div class="nav-search">
   <div class="navbar">
     <a class="active logo" href="/">ALUM</a>
@@ -9,172 +13,194 @@
       <a href="/user/auth/logout">Logout</a>
     </section>
   </div>
-  <h1 class="second-title">Meus Anúncios</h1>
-  <br>
+  {{!-- <h1 class="second-title">Meus Anúncios</h1> 
+    <br> --}}
 </div>
 
+{{!-- fim menu --}}
 
-<div class="addItem">
+<div class="tab">
+  <input for="tab1" type="radio" name="tabs" id="tab1" checked>
+  <label for="tab1">Adicionar Item</label>
 
-  <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data" id="itemform">
+  <input for="tab2" type="radio" name="tabs" id="tab2">
+  <label for="tab2">Meus Anúncios</label>
 
-    <h2 class="itemform-title">Adicionar Produto</h2>
-    <div class="row-register">
-      <div class="column-register"></div>
-      {{!-- <label for="text">Titulo do Anúncio</label> --}}
-      <div>
-        <input class="ads-title" type="text" name="title" placeholder="Título do Anúncio" />
-        <span class="bar-ads"></span>
-      </div>
+  <input for="tab3" type="radio" name="tabs" id="tab3">
+  <label for="tab3">Minhas Vendas</label>
 
-      <div>
-        <input type="text" name="school" placeholder="Nome da Escola" />
-        <span class="bar-ads"></span>
-      </div><br>
+  <input for="tab4" type="radio" name="tabs" id="tab4">
+  <label for="tab4">Minhas Compras</label>
 
-      {{!-- <label for="text">Escola</label> --}}
-      <div>
-        <label class="img-charge" for="text">Carregar Imagem</label>
-        <input class="img-charge" type="file" name="photo">
-      </div>
+  <div class="tabs">
+    <div class="content">
 
-      <div>
-        <label class="prod-description" for="text">Descrição do produto:</label><br>
-        <textarea type="text" name="description"></textarea>
-      </div>
+      <div class="addItem">
 
-      <div>
-        <p class="available-text">Disponível para:</p>
-        <div>
-          <input class="available" type="checkbox" id="available" name="sell">
-          <label for="sell">Venda</label>
-        </div>
-        <div>
-          <input class="available" type="checkbox" id="available" name="donation">
-          <label for="donation">Doação</label>
-        </div>
-        <div>
-          <input class="available" type="checkbox" id="available" name="change">
-          <label for="change">Troca</label>
-        </div>
-      </div>
+        <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data" id="itemform">
+          {{!-- CADASTRO --}}
+          <h2 class="itemform-titles">Cadastrar Produto</h2>
 
-      {{!-- <label for="text">Valor: R$ </label>
-          <textarea type="text" name="value" placeholder="50"></textarea> --}}
-      <div>
-        <input type="text" name="value" placeholder="Preço: R$ 50,00"></input>
-        <span class="bar-ads"></span>
-      </div>
+          <div class="container">
 
-      <div>
-        <label for="text">Produto</label>
-        <select id=productsMyAds name="product">
-          <option>Uniforme</option>
-          <option>Livro</option>
-          <option>Outros</option>
-        </select><br>
+            <section class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"></h3>
+              </div>
+              <div class="panel-body">
+
+                <form action="designer-finish.html" class="form-horizontal" role="form">
+
+                  <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Título do anúncio:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="title" id="title">
+                    </div>
+                  </div> <!-- form-group // -->
+
+                  <div class="form-group">
+                    <label for="price" class="col-sm-3 control-label">Preço:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="price" id="price">
+                    </div>
+                  </div> <!-- form-group // -->
+                  <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Nome da escola:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="school" id="school">
+                    </div>
+                  </div> <!-- form-group // -->
+                  <div class="form-group">
+                    <label for="about" class="col-sm-3 control-label">Descrição:</label>
+                    <div class="col-sm-9">
+                      <textarea name="description" class="form-control"></textarea>
+                    </div>
+                  </div> <!-- form-group // -->
+                  <div class="form-group">
+                    <label for="tech" class="col-sm-3 control-label">Produto</label>
+                    <div class="col-sm-3">
+                      <select name="product" class="form-control">
+                        <option value="">Uniforme</option>
+                        <option value="texnolog2">Livro</option>
+                        <option value="texnolog3">Outros</option>
+                      </select>
+                    </div>
+                  </div> <!-- form-group // -->
+                  <div class="form-group">
+                    <label for="tech" class="col-sm-3 control-label">Estado de uso</label>
+                    <div class="col-sm-3">
+                      <select name="tagState" class="form-control">
+                        <option value="">Novo</option>
+                        <option value="texnolog2">Usado</option>
+                      </select>
+                    </div>
+                  </div> <!-- form-group // -->
+                  <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Carregar Imagem</label>
+                    <div class="col-sm-3">
+                      <label class="img-charge" "control-label small" for="file_img">Formato (jpg/png):</label>
+                      <input class="img-charge" type="file" name="photo">
+                    </div>
+
+                  </div> <!-- form-group // -->
+                  <div class="form-group">
+                    <label for="tech" class="col-sm-3 control-label">Ano escolar</label>
+                    <div class="col-sm-3">
+                      <select name="tagYear" class="form-control">
+                        <option value="">Pré-escola</option>
+                        <option value="texnolog2">1 ano</option>
+                        <option value="texnolog2">2 ano</option>
+                        <option value="texnolog2">3 ano</option>
+                        <option value="texnolog2">4 ano</option>
+                        <option value="texnolog2">5 ano</option>
+                        <option value="texnolog2">6 ano</option>
+                        <option value="texnolog2">7 ano</option>
+                        <option value="texnolog2">8 ano</option>
+                        <option value="texnolog2">9 ano</option>
+                        <option value="texnolog2">1 ano - médio</option>
+                        <option value="texnolog2">2 ano - médio</option>
+                        <option value="texnolog2">3 ano - médio</option>
+                      </select>
+                    </div>
+                  </div> <!-- form-group // -->
+                  <button type="submit" class="botao-entrar">Anunciar</button>
+                </form>
+
+              </div><!-- panel-body // -->
+            </section><!-- panel// -->
+
+
+          </div> <!-- container// -->
+        </form>
       </div>
     </div>
 
-    {{!-- <div class="column">
-          <label for="text">Uniforme</label>
-          <select id=uniforme name="Uniforme">
-            <option></option>
-            <option>Bermuda/Saia</option>
-            <option>Calça</option>
-            <option>Casaco/Blusa</option>
-            <option>Camiseta</option>
-            <option>Outros</option>
-          </select><br>
+    {{!-- fim cadastro --}}
 
-          <label for="text">Ano Escolar</label>
-          <select id=tagYear name="tagYear">
-            <option></option>
-            <option>Pré-escola</option>
-            <option>1 ano</option>
-            <option>2 ano</option>
-            <option>3 ano</option>
-            <option>4 ano</option>
-            <option>5 ano</option>
-            <option>6 ano</option>
-            <option>7 ano</option>
-            <option>8 ano</option>
-            <option>9 ano</option>
-            <option>1 ano (Médio)</option>
-            <option>2 ano (Médio)</option>
-            <option>3 ano (Médio)</option>
-          </select><br>
+    {{!-- ANUNCIOS --}}
 
-          <label for="text">Matéria</label>
-          <select id=tagSize name="tagMatter">
-            <option></option>
-            <option>Geografia</option>
-            <option>Matemática</option>
-            <option>Português</option>
-            <option>Ciências</option>
-            <option>História</option>
-            <option>Iglês</option>
-            <option>Outros</option>
-          </select><br>
+    <div class="content">
 
-          <label for="text">Tamanho</label>
-          <select id=tagSize name="tagSize">
-            <option></option>
-            <option>P</option>
-            <option>M</option>
-            <option>G</option>
-            <option>Outro</option>
-          </select><br>
+      <div class="addItem">
 
-          <label for="text">Estado de Uso</label>
-          <select id=tagState name="tagState">
-            <option>Novo</option>
-            <option>Usado</option>
-          </select><br> --}}
+        <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data" id="itemform">
 
-    <button type="submit"> Anunciar</button>
-</div>
-</div>
-</form>
-</div>
+          <h2 class="itemform-titles">Meus Anúncios</h2>
 
+          <div class="allAds">
+            {{#each myAds}}
+            {{> adsPartial this}}
+            <a href="myAdsEdit/{{_id}}">Edit</a>
+            <a href="myAdsDel/{{_id}}">Delete</a>
+            <br><br><br>
+            {{/each}}
+          </div>
+        </form>
+      </div>
+    </div>
+    {{!-- fim  anuncio--}}
 
-<div class="allAds">
-  <h2>Meus Produtos Anunciados</h2>
-  {{#each myAds}}
-  {{> adsPartial this}}
-  <a href="myAdsEdit/{{_id}}">Edit</a>
-  <a href="myAdsDel/{{_id}}">Delete</a>
-  <br><br><br>
-  {{/each}}
-</div>
+    {{!-- VENDAS --}}
+    <div class="content">
+      <div class="addItem">
+        <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data" id="itemform">
+          <h2 class="itemform-titles">Minhas Vendas</h2>
+          <div class="allAds">
+            {{#each myTransactions}}
+            <p>Status: {{this.Status}}</p>
+            <p>Action: {{this.actions}}</p>
+            <p>Aproved: {{this.aproved}}</p>
+            {{/each}}
+            <br><br><br>
+          </div>
+        </form>
+      </div>
+    </div>
+    {{!-- fim vendas--}}
 
-<div class="allAds">
-  <h2>Minhas Compras</h2>
-  {{#each productArr}}
-  {{> adsPartial this}}
-  {{#if myTransactions}}
-  {{/if}}
-  <br><br><br>
-  {{/each}}
-</div>
+    {{!-- COMPRAS --}}
+    <div class="content">
 
-<div class="allAds">
-  <h2>Order</h2>
-  {{#each myTransactions}}
-  <p>Action: {{this.actions}}</p>
-  <p>Aproved: {{this.aproved}}</p>
-  {{/each}}
-  <br><br><br>
-</div>
+      <div class="addItem">
 
-<div class="allAds">
-  <h2>seller</h2>
-  {{#each seller}}
-  <p>Nome: {{this.name}}</p>
-  <p>e-mail: {{this.email}}</p>
-  <p>Contato: {{this.phone}}</p>
-  <p>Endereço: {{this.address}}</p>
-  {{/each}}
-  <br><br><br>
+        <form action="/ads/auth/myAds" method="POST" enctype="multipart/form-data" id="itemform">
+
+          <h2 class="itemform-titles">Minhas Compras</h2>
+          <div class="allAds">
+            {{#each productArr}}
+            {{> adsPartial this}}
+            {{#if myTransactions}}
+            <p>Status: {{this.Status}}</p>
+            <p>Action: {{this.actions}}</p>
+            {{!-- <p>Aproved: {{aproved}}</p> --}}
+            {{/if}}
+            <br><br><br>
+            {{/each}}
+          </div>
+        </form>
+      </div>
+    </div>
+    {{!-- fim compras--}}
+
+  </div>
 </div>
