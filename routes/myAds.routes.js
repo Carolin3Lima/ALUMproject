@@ -30,60 +30,56 @@ const searchMyAds = async () => {
 const serchTransactions = async () => {
   myTransactions = "";
   productIdArr = [];
-  myTransactions = await Order.find({ buyerID: { $eq: userId } });
-
-  myTransactions.forEach(element => {
-    productIdArr.push(element.productID);
-  });
+  myTransactions = await Order.find({ buyerID: { $eq: userId } })
+    .populate("productID")
+    .populate("sellerID");
 };
 
-const searchShopping = async () => {
-  productArr = [];
-  for (const key of productIdArr) {
-    let oneProduct = await Product.findOne({ _id: { $eq: key } });
-    productArr.push(oneProduct);
-  }
-};
+// const searchShopping = async () => {
+//   productArr = [];
+//   for (const key of productIdArr) {
+//     let oneProduct = await Product.findOne({ _id: { $eq: key } });
+//     productArr.push(oneProduct);
+//   }
+// };
 
-const searchSeller = async () => {
-  seller = [];
-  for (const key of myTransactions) {
-    let oneSeller = await User.findOne({
-      _id: { $eq: key.sellerID }
-    });
-    seller.password = undefined;
-    seller.push(oneSeller);
-  }
-};
+// const searchSeller = async () => {
+//   seller = [];
+//   for (const key of myTransactions) {
+//     let oneSeller = await User.findOne({
+//       _id: { $eq: key.sellerID }
+//     });
+//     seller.password = undefined;
+//     seller.push(oneSeller);
+//   }
+// };
 
-const mergeProdTrans = () => {
-  for (let i = 0; i < productArr.length; i += 1) {
-    for (let j = 0; j < myTransactions.length; j += 1) {
-      if (productArr[i].userID === myTransactions[j].sellerID) {
-        productArr[i].actions = myTransactions[j].actions;
-      }
-    }
-  }
-  return productArr;
-};
+// const mergeProdTrans = () => {
+//   for (let i = 0; i < productArr.length; i += 1) {
+//     for (let j = 0; j < myTransactions.length; j += 1) {
+//       if (productArr[i].userID === myTransactions[j].sellerID) {
+//         productArr[i].actions = myTransactions[j].actions;
+//       }
+//     }
+//   }
+//   return productArr;
+// };
 
 router.get("/auth/myAds", async (req, res, next) => {
   userId = req.session.currentUser._id;
   await searchMyAds();
   await serchTransactions();
-  await searchShopping();
-  await searchSeller();
-  mergeProdTrans();
+  // await searchShopping();
+  // await searchSeller();
+  // mergeProdTrans();
   try {
     console.log("myAds", myAds);
-    console.log("ProductArr", productArr);
+    // console.log("ProductArr", productArr);
     console.log("myTransactions", myTransactions);
-    console.log("seller", seller);
+    // console.log("seller", seller);
     return res.render("auth/myAds", {
       myAds,
-      productArr,
-      myTransactions,
-      seller
+      myTransactionss
     });
   } catch (err) {
     return res.render("auth/myAds", {

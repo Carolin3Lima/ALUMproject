@@ -7,7 +7,7 @@ const orderSchema = new Schema({
     ref: "User",
     required: true
   },
-  productID: { type: Schema.Types.ObjectId, ref: "Event", required: true },
+  productID: { type: Schema.Types.ObjectId, ref: "Product", required: true },
   // status: {
   //   type: String,
   //   enum: ["Disponivel", "Em negociação", "Vendido"],
