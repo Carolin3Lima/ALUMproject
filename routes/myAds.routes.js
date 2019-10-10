@@ -79,7 +79,7 @@ router.get("/auth/myAds", async (req, res, next) => {
     // console.log("seller", seller);
     return res.render("auth/myAds", {
       myAds,
-      myTransactionss
+      myTransactions
     });
   } catch (err) {
     return res.render("auth/myAds", {
@@ -109,7 +109,7 @@ router.post(
       return res.redirect("/");
     } catch (err) {
       console.log("err", err);
-      return res.render("auth/mayAds", {
+      return res.render("auth/myAds", {
         errorMessage: `Erro ao criar Anuncio: ${err}`
       });
     }
