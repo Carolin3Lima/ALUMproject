@@ -18,9 +18,9 @@ router.use((req, res, next) => {
 let userId = "";
 let myAds = "";
 let myTransactions = "";
-let productIdArr = [];
-let productArr = [];
-let seller = [];
+// let productIdArr = [];
+// let productArr = [];
+// let seller = [];
 
 const searchMyAds = async () => {
   myAds = "";
