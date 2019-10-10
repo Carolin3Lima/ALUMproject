@@ -10,7 +10,7 @@ const productSchema = new Schema({
   value: { type: String, min: 1, max: 6 },
   product: {
     type: String,
-    enum: ["Uniforme", "Livros", "Outros"]
+    enum: ["", "Uniforme", "Livros", "Outros"]
   },
   uniforme: {
     type: String,
