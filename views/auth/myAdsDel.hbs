@@ -1,9 +1,14 @@
+<head>
+  <link rel="stylesheet" href="/stylesheet/styleadds.css">
+</head>
+
 <div class="nav-search">
   <div class="navbar">
     <a class="active logo" href="/">ALUM</a>
     <section class="navitens">
       <a class="navitem" href="/allAds/all">Anúncios</a>
       <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+      <a class="navitem" href="/ads/auth/sells">Minhas Transações</a>
       {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
       <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
       <a href="/user/auth/logout">Logout</a>
@@ -12,19 +17,21 @@
 </div>
 
 <h1>Deletar Meu Anúncio</h1>
-<div>
-  <form action="/ads/auth/myAdsDel?id={{_id}}" method="POST">
-    <p name="title" value="{{title}}">Tutulo: {{title}}</p>
-    <p name="achool" value="{{school}}">Escola: {{school}}</p>
-    <img name="photo" src="{{imgPath}}" alt="{{imgName}}">
-    <p name="product">Descrição {{product}}</p>
-    <p name="value">Valor {{value}}</p>
-    <p name="product">Produto {{product}}</p>
-    <p name="uniforme">Uniforme {{uniforme}}</p>
-    <p name="tagYear">Ano {{tagYear}}</p>
-    <p name="tagMatter">Materia {{tagMatter}}</p>
-    <p name="tagSize">Tamanho {{tagSize}}</p>
-    <p name="tagState">Estado de Uso {{tagState}}</p>
-    <button type="submit">Deletar</button>
+<div class="blog-card">
+    <div class="meta">
+
+			<img class="photo" src={{this.imgPath}} width="300" height="300">
+    </div>
+    <div class="partialstuff">
+      <h4>{{this.title}}</h4>
+      <p>Produto: {{this.product}}</p>
+      <p>Escola: {{this.school}}</p>
+      <p>Estado de uso: {{this.tagState}}</p>
+      <p>Ano Escolar: {{this.tagYear}}</p>
+      <p>Preço: R${{this.value}}</p>
+      <p>Descrição: {{this.description}}</p>
+    </div>
+  </div>
+    <button class="confirm-button" type="submit">Deletar</button>
   </form>
 </div>

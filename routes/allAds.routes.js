@@ -5,11 +5,14 @@ const router = express.Router();
 
 const serchAds = async (req, res) => {
   const regex = new RegExp(escapeRegex(req.query.search), "gi");
-  const allAds = await Product.find({ title: regex });
-  if (allAds === undefined) {
-    allAds = "Nenhum resultado encontrado para sua busca!";
+  const allAds = await Product.find({ title: regex, status: { $eq: "Disponivel" }});
+  if (allAds.length < 1) {
+    return res.render("allAds", {
+      errorMessage: `Produto não encontrado!`
+    })
   }
-  res.render("allAds", { allAds });
+  
+    return res.render("allAds", { allAds });
 };
 
 router.get("/", serchAds);
@@ -26,6 +29,8 @@ const searchAllAds = async (req, res) => {
     return res.render("allAds", `errorMessage: ${err}!`);
   }
 };
+
+// return res.render("error", { errorMessage: `Erro: ${err}!` });
 
 router.get("/all", searchAllAds);
 

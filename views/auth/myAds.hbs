@@ -8,6 +8,7 @@
     <section class="navitens">
       <a class="navitem" href="/allAds/all">Anúncios</a>
       <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+      <a class="navitem" href="/ads/auth/sells">Minhas Transações</a>
       {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
       <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
       <a href="/user/auth/logout">Logout</a>
@@ -21,22 +22,39 @@
 
 <div class="tab">
   <input for="tab1" type="radio" name="tabs" id="tab1" checked>
-  <label for="tab1">Adicionar Item</label>
+  <label for="tab1">Meus Anúncios </label>
 
   <input for="tab2" type="radio" name="tabs" id="tab2">
-  <label for="tab2">Meus Anúncios</label>
-
-  <input for="tab3" type="radio" name="tabs" id="tab3">
-  <label for="tab3">Minhas Vendas</label>
-
-  <input for="tab4" type="radio" name="tabs" id="tab4">
-  <label for="tab4">Minhas Compras</label>
+  <label for="tab2">Adicionar Produto</label>
 
   <div class="tabs">
+    
+
+    {{!-- ANUNCIOS --}}
+
     <div class="content">
 
       <div class="addItem">
-        {{!-- CADASTRO --}}
+
+        <h2 class="itemform-titles">Meus Anúncios</h2>
+
+        <div class="allAds">
+          {{#each myAds}}
+          {{> adsPartial this}}
+          <a class="edit-button" href="myAdsEdit/{{_id}}">Edit</a> 
+          <a class="edit-button" href="myAdsDel/{{_id}}">Delete</a>
+          <br><br><br>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    {{!-- fim  anuncio--}}
+
+    
+    {{!-- CADASTRO --}}
+    <div class="content">
+
+      <div class="addItem">
         <h2 class="itemform-titles">Cadastrar Produto</h2>
 
         <div class="container">
@@ -47,7 +65,7 @@
             </div>
             <div class="panel-body">
 
-              <form action="ads/auth/myAds" method="POST" class="form-horizontal" role="form">
+              <form action="myAds" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
 
                 <div class="form-group">
                   <label for="name" class="col-sm-3 control-label">Título do anúncio:</label>
@@ -123,6 +141,9 @@
                     </select>
                   </div>
                 </div> <!-- form-group // -->
+                      {{#if errorMessage}}
+                      <div>{{ errorMessage }}</div>
+                      {{/if}}
                 <button type="submit" class="botao-entrar">Anunciar</button>
               </form>
 
@@ -136,66 +157,6 @@
 
     {{!-- fim cadastro --}}
 
-    {{!-- ANUNCIOS --}}
-
-    <div class="content">
-
-      <div class="addItem">
-
-        <h2 class="itemform-titles">Meus Anúncios</h2>
-
-        <div class="allAds">
-          {{#each myAds}}
-          {{> adsPartial this}}
-          <a href="myAdsEdit/{{_id}}">Edit</a>
-          <a href="myAdsDel/{{_id}}">Delete</a>
-          <br><br><br>
-          {{/each}}
-        </div>
-      </div>
-    </div>
-    {{!-- fim  anuncio--}}
-
-    {{!-- VENDAS --}}
-    <div class="content">
-      <div class="addItem">
-        <h2 class="itemform-titles">Minhas Vendas</h2>
-        <div class="allAds">
-          {{#each myTransactions}}
-          <p>Status: {{this.Status}}</p>
-          <p>Action: {{this.actions}}</p>
-          <p>Aproved: {{this.aproved}}</p>
-          {{/each}}
-          <br><br><br>
-        </div>
-      </div>
-    </div>
-    {{!-- fim vendas--}}
-
-    {{!-- COMPRAS --}}
-    <div class="content">
-
-      <div class="addItem">
-        <h2 class="itemform-titles">Minhas Compras</h2>
-        <div class="allAds">
-
-          {{#each myTransactions.productID}}
-          {{> adsPartial this}}
-
-          {{#if myTransactions.productID}}
-          <p>Status: {{this.status}}</p>
-          {{/if}}
-
-          {{#if myTransactions}}
-          <p>Action: {{this.actions}}</p>
-          {{/if}}
-
-          <br><br><br>
-          {{/each}}
-
-        </div>
-      </div>
-    </div>
     {{!-- fim compras--}}
     {{#if errorMessage}}
     <div>{{ errorMessage }}</div>

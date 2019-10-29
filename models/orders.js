@@ -8,12 +8,12 @@ const orderSchema = new Schema({
     required: true
   },
   productID: { type: Schema.Types.ObjectId, ref: "Product", required: true },
-  // status: {
-  //   type: String,
-  //   enum: ["Disponivel", "Em negociação", "Vendido"],
-  //   default: "Em negociação",
-  //   required: true
-  // },
+  status: {
+    type: String,
+    enum: ["Disponivel", "Em negociação", "Vendido"],
+    default: "Em negociação",
+    required: true
+  },
   actions: {
     type: String,
     enum: ["Aguardando Envio", "Envio Efetuado", "Produto Recebido"],

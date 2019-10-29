@@ -1,10 +1,23 @@
-<h1>Produtos pesquisados</h1>
+<div class="nav-search">
+  <div class="navbar">
+    <a class="active logo" href="/">ALUM</a>
+    <section class="navitens">
+      <a class="navitem" href="/allAds/all">Anúncios</a>
+      <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+      <a href="/ads/auth/myAds">Login | Registrar</a>
+      {{!-- <a href="/user/auth/logout">Logout</a> --}}
+      {{!-- <a class="navitem" href="/user/auth/userEdit">Editar conta</a> --}}
+    </section>
+  </div>
+</div>
+
+<h3 class="titulo-anuncio">Produtos pesquisados</h3>
 <div>
   <form action="order/auth/order?id={{_id}}" method="GET">
     <div class="filterAds">
       {{#each filterAds}}
       {{> adsPartial this}}
-      <a href="order/auth/order?id={{_id}}">Comprar</a>
+      <a class="buy-button" href="order/auth/order?id={{_id}}">Comprar</a>
       <br><br><br>
       {{/each}}
     </div>

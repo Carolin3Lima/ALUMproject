@@ -69,7 +69,7 @@ const serchTransactions = async () => {
 //   return productArr;
 // };
 
-router.get("/auth/myAds", async (req, res, next) => {
+router.get("/auth/sells", async (req, res, next) => {
   userId = req.session.currentUser._id;
   await searchMyAds();
   await serchTransactions();
@@ -79,16 +79,16 @@ router.get("/auth/myAds", async (req, res, next) => {
   try {
     //console.log("myAds", myAds);
     // console.log("ProductArr", productArr);
-    //console.log("myTransactions", myTransactions);
+    //odos os Anúnciosconsole.log("myTransactions", myTransactions);
     //console.log("buyer", buyer);
     // console.log("seller", seller);
-    return res.render("auth/myAds", {
+    return res.render("auth/sells", {
       myAds,
       myTransactions,
       buyer
     });
   } catch (err) {
-    return res.render("auth/myAds", {
+    return res.render("auth/sells", {
       errorMessage: `Erro ao criar Negociação: ${err}`
     });
   }
@@ -101,7 +101,7 @@ router.post(
     const { title, school } = req.body;
 
     if (!title || !school)
-      return res.render("auth/myAds", {
+      return res.render("auth/sells", {
         errorMessage: `Dados insuficientes!`
       });
 
@@ -115,7 +115,7 @@ router.post(
       return res.redirect("/");
     } catch (err) {
       console.log("err", err);
-      return res.render("auth/myAds", {
+      return res.render("auth/sells", {
         errorMessage: `Erro ao criar Anuncio: ${err}`
       });
     }

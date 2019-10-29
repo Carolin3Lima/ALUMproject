@@ -1,0 +1,126 @@
+<head>
+  <link rel="stylesheet" href="/stylesheet/styleadds.css">
+</head>
+
+<div class="nav-search">
+  <div class="navbar">
+    <a class="active logo" href="/">ALUM</a>
+    <section class="navitens">
+      <a class="navitem" href="/allAds/all">Anúncios</a>
+      <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+      <a class="navitem" href="/ads/auth/sells">Minhas Transações</a>
+      {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
+      <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
+      <a href="/user/auth/logout">Logout</a>
+    </section>
+  </div>
+  {{!-- <h1 class="second-title">Meus Anúncios</h1> 
+    <br> --}}
+</div>
+
+{{!-- fim menu --}}
+
+
+
+    {{!-- VENDAS --}}
+  <div class="transacoes-div">
+    <div class="content">
+      <div class="addItem">
+        <h2 class="itemform-titles">Minhas Vendas</h2>
+       
+        <div class="allAds">
+          {{#each myTransactions}}
+
+           {{!-- inclui --}}
+       
+            <div class="blog-card">
+              <div class="meta">
+
+                <img class="photo" src={{this.imgPath}} width="300" height="300">
+              </div>
+              <div class="partialstuff">
+                <h3>{{this.title}}</h3>
+                <p>Produto: {{this.product}}</p>
+                <p>Escola: {{this.school}}</p>
+                <p>Estado de uso: {{this.tagState}}</p>
+                <p>Ano Escolar: {{this.tagYear}}</p>
+                <p>Preço: R${{this.value}}</p>
+                <p>Descrição: {{this.description}}</p>
+              </div>
+            </div>
+
+         
+
+          <p>Status: {{this.status}}</p>
+          {{!-- <p>Action: {{this.actions}}</p>
+          <p>Aproved: {{this.aproved}}</p> --}}
+          <p>Nome do Comprador: {{this.buyerID.name}}</p>
+          <p>E-mail: {{this.buyerID.email}}</p>
+          <p>Telefone: {{this.buyerID.phone}}</p>
+          <p>Endereço: {{this.buyerID.adress}}</p>
+           <form action="myAdsStatus?id={{_id}}&status=Produto Enviado" method="POST" role="form" enctype="multipart/form-data" >
+              {{#is this.status "Em negociação"}}
+              <button type="submit">Produto Enviado</button>
+              {{/is}}
+             </form>
+          {{/each}}
+ 
+          <br><br><br>
+        </div>
+     
+      </div>
+    </div>
+    {{!-- fim vendas--}}
+
+    {{!-- COMPRAS --}}
+    <div class="content">
+
+      <div class="addItem">
+        <h2 class="itemform-titles">Minhas Compras</h2>
+        <div class="allAds">
+         
+
+          {{#each myTransactions}}
+            <div class="blog-card">
+              <div class="meta">
+
+                <img class="photo" src={{this.imgPath}} width="300" height="300">
+              </div>
+              <div class="partialstuff">
+                <h3>{{this.title}}</h3>
+                <p>Produto: {{this.product}}</p>
+                <p>Escola: {{this.school}}</p>
+                <p>Estado de uso: {{this.tagState}}</p>
+                <p>Ano Escolar: {{this.tagYear}}</p>
+                <p>Preço: R${{this.value}}</p>
+                <p>Descrição: {{this.description}}</p>
+              </div>
+            </div>
+
+          <p>Status: {{this.status}}</p>
+          {{!-- <p>Action: {{this.actions}}</p>
+          <p>Aproved: {{this.aproved}}</p> --}}          <p>Action: {{this.actions}}</p>
+          <p>Aproved: {{this.aproved}}</p>
+
+          <p>Nome do Comprador: {{this.sellerID.name}}</p>
+          <p>E-mail: {{this.sellerID.email}}</p>
+
+          <br><br><br>
+              <form action="myAdsStatus?id={{_id}}&status=Produto Recebido" method="POST" role="form" enctype="multipart/form-data" >
+              {{#is this.status "Produto Enviado"}}
+              <button type="submit">Produto Recebido</button>
+              {{/is}}
+             </form>
+             <br><br><br>
+          {{/each}}
+
+        </div>
+      </div>
+    </div>
+    
+    {{#if errorMessage}}
+    <div>{{ errorMessage }}</div>
+    {{/if}}
+  
+</div>
+</div>  

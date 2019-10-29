@@ -3,27 +3,19 @@
 </head>
 
 
-{{!-- <div class="ads-container">
-      <h1>{{this.title}}</h1>
-      <img src={{this.imgPath}} alt={{this.imgName}} width="100px">
-      <h2>Escola: {{this.school}}</h2>
-      <p>Descrição: {{this.description}}</p>
-      <p>Valor: R$ {{this.value}}</p>
-      <p>Produto: {{this.product}}</p>
-      <p>Uniforme: {{this.uniforme}}</p>
-      <p>Ano: {{this.tagYear}}</p>
-      <p>Matéria: {{this.tagMatter}}</p>
-      <p>Tamanho: {{this.tagSize}}</p>
-      <p>Estado de Uso: {{this.tagState}}</p>
-      <p>Status: {{this.status}}</p>
-    </div> --}}
+<div class="blog-card">
+    <div class="meta">
 
-<div class="ads-container">
-  <div class="card">
-    <img src={{this.imgPath}} alt={{this.imgName}} style="width:100%">
-    <h3>{{this.title}}</h3>
-    <p class="price">R${{this.value}}</p>
-    <p>{{this.description}}</p>
-    <p><button>Add to Cart</button></p>
+			<img class="photo" src={{this.imgPath}} width="300" height="300">
+    </div>
+    <div class="partialstuff">
+      <h4>{{this.title}}</h4>
+      <p>Produto: {{this.product}}</p>
+      <p>Escola: {{this.school}}</p>
+      <p>Estado de uso: {{this.tagState}}</p>
+      <p>Ano Escolar: {{this.tagYear}}</p>
+      <p>Preço: R${{this.value}}</p>
+      <p>Descrição: {{this.description}}</p>
+    </div>
   </div>
-</div>
+  

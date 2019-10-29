@@ -24,7 +24,8 @@
     "partial": "0.0.7",
     "partials": "^0.1.0",
     "passport-google-oauth": "^2.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "swag": "^0.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"

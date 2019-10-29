@@ -5,6 +5,10 @@ const app = express();
 
 const morgan = require("morgan");
 const hbs = require("hbs");
+Swag = require('swag');
+
+Swag.registerHelpers(hbs);
+
 const bodyParser = require("body-parser");
 const path = require("path");
 
@@ -12,6 +16,7 @@ const mongoose = require("mongoose");
 
 const session = require("express-session");
 const mongoStore = require("connect-mongo")(session);
+
 
 const url = process.env.servermongoAtlas;
 const options = {
@@ -71,6 +76,9 @@ app.use("/login", loginRoute);
 
 const myAdsRoute = require("./routes/myAds.routes");
 app.use("/ads", myAdsRoute);
+
+const myAdsSellsRoute = require("./routes/sells.routes");
+app.use("/ads", myAdsSellsRoute);
 
 const orderRoute = require("./routes/order.routes");
 app.use("/order", orderRoute);

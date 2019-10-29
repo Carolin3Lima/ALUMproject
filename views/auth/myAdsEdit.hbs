@@ -1,9 +1,15 @@
+<head>
+  <link rel="stylesheet" href="/stylesheet/styleadds.css">
+</head>
+
+
 <div class="nav-search">
   <div class="navbar">
     <a class="active logo" href="/">ALUM</a>
     <section class="navitens">
       <a class="navitem" href="/allAds/all">Anúncios</a>
       <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+      <a class="navitem" href="/ads/auth/sells">Minhas Transações</a>
       {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
       <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
       <a href="/user/auth/logout">Logout</a>
@@ -11,11 +17,11 @@
   </div>
 </div>
 
-<h1>Editar Meus Anúncios</h1>
-<div>
+<h3>Editar Meus Anúncios</h3>
+<div class="editar-anuncio">
   <form action="/ads/auth/myAdsEdit?id={{_id}}" method="POST">
 
-    <label for="text">Titulo</label>
+    {{!-- <label for="text">Titulo</label>
     <input type="text" name="title" value="{{title}}"> <br>
 
     <label for="text">Escola</label>
@@ -36,67 +42,94 @@
       <option value="uniforme">Uniforme</option>
       <option value="Livros">Livros</option>
       <option value="Outros">Outros</option>
-    </select><br>
+    </select><br> --}}
 
-    <label for="text">Uniforme</label>
-    <select id=uniforme name="uniforme">
-      <option value="{{uniforme}}">{{uniforme}}</option>
-      <option></option>
-      <option value="Bermuda/Saia">Bermuda/Saia</option>
-      <option value="Calça">Calça</option>
-      <option value="Casaco/Blusa">Casaco/Blusa</option>
-      <option value="Camiseta">Camiseta</option>
-      <option value="Outros">Outros</option>
-    </select><br>
+    {{!-- EDITA --}}
 
-    <label for="text">Ano</label>
-    <select id=tagYear name="tagYear">
-      <option value="{{tagYear}}">{{tagYear}}</option>
-      <option value="1 ano">1 ano</option>
-      <option value="2 ano">2 ano</option>
-      <option value="3 ano">3 ano</option>
-      <option value="4 ano">4 ano</option>
-      <option value="5 ano">5 ano</option>
-      <option value="6 ano">6 ano</option>
-      <option value="7 ano">7 ano</option>
-      <option value="8 ano">8 ano</option>
-      <option value="9 ano">9 ano</option>
-      <option value="1 ano Medio">1 ano Medio</option>
-      <option value="2 ano Medio">2 ano Medio</option>
-      <option value="3 ano Medio">3 ano Medio</option>
-    </select><br>
+      <div class="container">
 
-    <label for="text">Materia</label>
-    <select id=tagSize name="tagMatter">
-      <option value="{{tagMatter}}">{{tagMatter}}</option>
-      <option value="Geografia">Geografia</option>
-      <option value="Matemática">Matemática</option>
-      <option value="Português">Português</option>
-      <option value="Ciências">Ciências</option>
-      <option value="História">História</option>
-      <option value="Iglês">Iglês</option>
-      <option value="Outros">Outros</option>
-    </select><br>
+         
+            <div class="panel-body">
 
-    <label for="text">Tamanho</label>
-    <select id=tagSize name="tagSize">
-      <option value="{{tagSize}}">{{tagSize}}</option>
-      <option value="P">P</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-    </select><br>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Título do anúncio:</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="title" id="title" value="{{title}}">
+                  </div>
+                </div> <!-- form-group // -->
 
-    <label for="text">Estado de Uso</label>
-    <select id=tagState name="tagState">
-      <option value="{{tagState}}">{{tagState}}</option>
-      <option value="Novo">Novo</option>
-      <option value="Usado">Usado</option>
-    </select><br>
+                <div class="form-group">
+                  <label for="price" class="col-sm-3 control-label">Preço:</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="value" value="{{price}}" id="price">
+                  </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Nome da escola:</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="school" id="school" value="{{school}}">
+                  </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                  <label for="about" class="col-sm-3 control-label">Descrição:</label>
+                  <div class="col-sm-9">
+                    <textarea name="description" value="{{description}}" class="form-control"></textarea>
+                  </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                  <label for="tech" class="col-sm-3 control-label">Produto</label>
+                  <div class="col-sm-3">
+                    <select name="product" class="form-control">
+                      <option value="{{product}}"></option>
+                      <option value="Uniforme">Uniforme</option>
+                      <option value="Livro">Livro</option>
+                      <option value="Outros">Outros</option>
+                    </select>
+                  </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                  <label for="tech" class="col-sm-3 control-label">Estado de uso</label>
+                  <div class="col-sm-3">
+                    <select name="tagState" class="form-control">
+                      <option value="{{tagState}}"></option>
+                      <option value="Novo">Novo</option>
+                      <option value="Usado">Usado</option>
+                    </select>
+                  </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Carregar Imagem</label>
+                  <div class="col-sm-3">
+                    <label class="img-charge" "control-label small" for="file_img">Formato (jpg/png):</label>
+                    <input class="img-charge" value="{{imgPath}}" type="file" name="imgPath">
+                  </div>
+
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                  <label for="tech" class="col-sm-3 control-label">Ano escolar</label>
+                  <div class="col-sm-3">
+                    <select name="tagYear" class="form-control">
+                      <option value="{{tagYear}}"></option>
+                      <option value="1 ano">1 ano</option>
+                      <option value="2 ano">2 ano</option>
+                      <option value="3 ano">3 ano</option>
+                      <option value="4 ano">4 ano</option>
+                      <option value="5 ano">5 ano</option>
+                      <option value="6 ano">6 ano</option>
+                      <option value="7 ano">7 ano</option>
+                      <option value="8 ano">8 ano</option>
+                      <option value="9 ano">9 ano</option>
+                      <option value="1 ano Medio">1 ano - médio</option>
+                      <option value="2 ano Medio">2 ano - médio</option>
+                      <option value="3 ano Medio">3 ano - médio</option>
+                    </select>
+                  </div>
+                </div> <!-- form-group // -->
 
     {{#if errorMessage}}
     <div>{{ errorMessage }}</div>
     {{/if}}
 
-    <button type="submit">Salvar</button>
+    <button class="save-button" type="submit">Salvar</button>
   </form>
 </div>

@@ -1,41 +1,41 @@
 <div class="nav-search">
-  <div class="navbar">
-    <a class="active logo" href="/">ALUM</a>
-    <section class="navitens">
-      <a class="navitem" href="/allAds/all">Anúncios</a>
-      <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
-      {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
-      <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
-      <a href="/user/auth/logout">Logout</a>
-    </section>
-  </div>
+    <div class="navbar">
+      <a class="active logo" href="/">ALUM</a>
+      <section class="navitens">
+        <a class="navitem" href="/allAds/all">Anúncios</a>
+        <a class="navitem" href="/ads/auth/myAds">Meus Anúncios</a>
+        <a class="navitem" href="/ads/auth/sells">Minhas Transações</a>
+        {{!-- <a href="/ads/auth/myAds">Login | Registrar</a> --}}
+        <a class="navitem" href="/user/auth/userEdit">Meus Dados</a>
+        <a href="/user/auth/logout">Logout</a>
+      </section>
+    </div>
 </div>
 
-<form class="cadastro">
+<div class="cadastro">
   <form action="/user/auth/userEdit?id={{_id}}" method="POST" id="msform" class="user-form">
     <fieldset>
       <h2 class="userform-title">Meus Dados</h2>
 
       <div>
-        <input class="bar-form" type="text" name="name" value={{name}} placeholder="Nome Sobrenome" />
-        <span class="bar-form"></span>
+      <input class="bar-form" type="text" name="name" value={{name}} placeholder="Nome Sobrenome" />
+      <span class="bar-form"></span>
       </div>
-
+      
       <div>
         <input class="bar-form" type="text" name="email" value={{email}} placeholder="exemplo@email.com" />
         <span class="bar-form"></span>
       </div>
 
       <div>
-        <input class="bar-form" type="number" name="phone" value={{phone}}
-          placeholder="Telefone com DDD (ex: 1188547845)" />
+        <input class="bar-form" type="number" name="phone" value={{phone}} placeholder="Telefone com DDD (ex: 1188547845)" />
         <span class="bar-form"></span>
       </div>
 
       <div>
         <p class="title-adress">Endereço:</p>
         <textarea name="address" value={{address}}
-          placeholder="Endereço (ex: Av.Paulista, 1283, apto 58 - Bela Vista. São Paulo-SP. CEP 01567894)"></textarea>
+        placeholder="Endereço (ex: Av.Paulista, 1283, apto 58 - Bela Vista. São Paulo-SP. CEP 01567894)"></textarea>
       </div>
 
       {{#if errorMessage}}
@@ -45,4 +45,4 @@
       <input type="submit" name="submit" class="submit action-button" value="Enviar" />
     </fieldset>
   </form>
-</form>
+</div>
